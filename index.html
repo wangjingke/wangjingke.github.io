@@ -1,7 +1,122 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+<!--
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+-->
+
+<script src="./js/papaparse.min.js"> </script>
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" charset="utf-8"> </script>
+</head>
+
 <body>
-<h1>Hello World</h1>
+<h1>MADRES Call Schedule</h1>
 <p>I'm hosted with GitHub Pages.</p>
+
+
+<p id="today"></p>
+<input type="file" id="fileUpload" />
+<input type="button" id="upload" value="Upload" onclick = "Upload()" />
+<p> Process data after the upload </p>
+<input type="button" id="calculate" value="calculate" onclick = "Process ()" />
+
+
+<script type="text/javascript">
+
+function Upload() {
+    var fileUpload = document.getElementById("fileUpload");
+    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+    if (regex.test(fileUpload.value.toLowerCase())) {
+        if (typeof (FileReader) != "undefined") {
+            var reader = new FileReader();
+            reader.readAsText(fileUpload.files[0]);
+            reader.onload = loadHandler;
+            function loadHandler(event) {
+                var csv = event.target.result;
+                output = Papa.parse(csv);
+            }
+        } else {
+            alert("This browser does not support HTML5.");
+        }
+    } else {
+        alert("Please upload a valid CSV file.");
+    }
+}
+
+function Process() {
+    s02_duedate = output.data[0].indexOf("s02_duedate");
+    q01_duedate = output.data[0].indexOf("q01_duedate");
+    family_id = [];
+    for (i = 0; i < output.data.length; i++) {
+        family_id.push(output.data[i][0]);
+    }
+
+    function unique(list) {
+      var result = [];
+      $.each(list, function(j, e) {
+        if ($.inArray(e, result) == -1) result.push(e);
+      });
+      return result;
+    }
+    indivList = unique(family_id);
+
+    scheduleTemp = [];
+    for (i = 0; i < output.data.length; i++) {
+        scheduleTemp.push([output.data[i][0], output.data[i][s02_duedate], output.data[i][q01_duedate]]);
+    }
+
+    function getAllIndexes(arr, val) {
+        var indexes = [];
+        for(j = 0; j < arr.length; j++) {
+            if (arr[j] === val) {indexes.push(j)};
+        }
+        return indexes;
+    }
+
+    schedule = [];
+    for (i = 1; i < indivList.length; i++) {
+        if (indivList[i] == "") {continue};
+        entryX = [indivList[i], "", ""];
+        $.each(getAllIndexes(family_id, indivList[i]), function(j, e) {
+            if (scheduleTemp[e][1] != "") {entryX[1] = scheduleTemp[e][1]};
+            if (scheduleTemp[e][2] != "") {entryX[2] = scheduleTemp[e][2]};
+        });
+        schedule.push(entryX);
+    }
+    console.log(schedule);
+
+    function trimester(date, num) {
+        var dueString = date.split("-");
+        dueDate = new Date(dueString[0], dueString[1]-1, dueString[2]);
+        return(dueDate.setDate(num));
+    }
+
+    // for (i = 0; i < schedule.length; i++) {
+    //     if (schedule[i][3] != "") {
+    //
+    //     }
+    // }
+
+
+
+
+
+}
+
+
+
+
+
+today = new Date();
+document.getElementById("today").innerHTML = "Today is " + today;
+
+noDueDate = [];
+trimester1 = [];
+trimester2 = [];
+trimester3 = [];
+
+</script>
+
 </body>
 </html>
