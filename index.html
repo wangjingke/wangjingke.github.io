@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery-2.2.3.min.js" charset="utf-8"> </script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+<script src="./js/functions.js"> </script>
 </head>
 
 <body>
@@ -18,7 +19,7 @@
 <input type="file" id="fileUpload" />
 <input type="button" id="upload" value="Upload" onclick = "Upload()" />
 <p> Process data after the upload </p>
-<input type="button" id="Process" value="Process" onclick = "Process ()" />
+<input type="button" id="Process" value="Process" disabled="true" onclick = "Process ()" />
 <p> As of today, the following participants are in their first trimester. </p>
 <p id="tr1"></p>
 <p> As of today, the following participants are in their second trimester. </p>
@@ -42,27 +43,7 @@
 
 <script type="text/javascript">
 today = new Date();
-document.getElementById("today").innerHTML = "Today is " + today.toString();
-
-function Upload() {
-    var fileUpload = document.getElementById("fileUpload");
-    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
-    if (regex.test(fileUpload.value.toLowerCase())) {
-        if (typeof (FileReader) != "undefined") {
-            var reader = new FileReader();
-            reader.readAsText(fileUpload.files[0]);
-            reader.onload = loadHandler;
-            function loadHandler(event) {
-                var csv = event.target.result;
-                output = Papa.parse(csv);
-            }
-        } else {
-            alert("This browser does not support HTML5.");
-        }
-    } else {
-        alert("Please upload a valid CSV file.");
-    }
-}
+document.getElementById("today").innerHTML = "Today is " + dateCut(today);
 
 function Process() {
     s02_duedate = output.data[0].indexOf("s02_duedate");
@@ -71,27 +52,11 @@ function Process() {
     for (i = 0; i < output.data.length; i++) {
         family_id.push(output.data[i][0]);
     }
-
-    function unique(list) {
-      var result = [];
-      $.each(list, function(j, e) {
-        if ($.inArray(e, result) == -1) result.push(e);
-      });
-      return result;
-    }
     indivList = unique(family_id);
 
     scheduleTemp = [];
     for (i = 0; i < output.data.length; i++) {
         scheduleTemp.push([output.data[i][0], output.data[i][s02_duedate], output.data[i][q01_duedate]]);
-    }
-
-    function getAllIndexes(arr, val) {
-        var indexes = [];
-        for(j = 0; j < arr.length; j++) {
-            if (arr[j] === val) {indexes.push(j)};
-        }
-        return indexes;
     }
 
     schedule = [];
@@ -105,16 +70,6 @@ function Process() {
         schedule.push(entryX);
     }
 
-    function trimester(date, num) {
-        Date.prototype.addDays=function(d){return new Date(this.valueOf()+864E5*d)};
-        var dueString = date.split("-");
-        dueDate = new Date(dueString[0], dueString[1]-1, dueString[2]);
-        predict = new Date(dueDate.addDays(num));
-        return(predict);
-    }
-    function dateCut(x) {
-        return(x.getFullYear()+"-"+(x.getMonth()+1)+"-"+x.getDate());
-    }
     noDueDate = [];
     trimester1 = [];
     trimester2 = [];
