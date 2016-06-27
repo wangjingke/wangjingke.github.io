@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-2.2.3.min.js" charset="utf-8"> </script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
-<script src="./js/functions.js"> </script>
+<script src="./js/madres_schedule_functions.js"> </script>
 </head>
 
 <body>
@@ -19,13 +19,16 @@
 <input type="file" id="fileUpload" />
 <input type="button" id="upload" value="Upload" onclick = "Upload()" />
 <p> Process data after the upload </p>
-<input type="button" id="Process" value="Process" disabled="true" onclick = "Process ()" />
+<input type="button" id="process" value="Generate Report" disabled="true" onclick = "process()" />
+<input type="button" id="download" value="Download Report" disabled="true" onclick = "download()" />
 <p> As of today, the following participants are in their first trimester. </p>
 <p id="tr1"></p>
 <p> As of today, the following participants are in their second trimester. </p>
 <p id="tr2"></p>
 <p> As of today, the following participants are in their third trimester. </p>
 <p id="tr3"></p>
+<p> As of today, the following participants dropped out of the study. </p>
+<p id="dropOut"></p>
 <p> As of today, the following participants do not have an expected due date. </p>
 <p id="noDue"></p>
 
@@ -33,8 +36,11 @@
     <thead>
         <tr>
             <th>Subject ID</th>
+            <th>Drop Out</th>
             <th>Due Date 1</th>
             <th>Due Date 2</th>
+            <th>Due Date 3</th>
+            <th>Due Date 4</th>
             <th>Tr1/Tr2 Cutoff</th>
             <th>Tr2/Tr3 Cutoff</th>
         </tr>
@@ -45,60 +51,77 @@
 today = new Date();
 document.getElementById("today").innerHTML = "Today is " + dateCut(today);
 
-function Process() {
+function process() {
     s02_duedate = output.data[0].indexOf("s02_duedate");
     q01_duedate = output.data[0].indexOf("q01_duedate");
+    eventName = output.data[0].indexOf("redcap_event_name")
+    w_date = output.data[0].indexOf("w_date");
+
     family_id = [];
     for (i = 0; i < output.data.length; i++) {
         family_id.push(output.data[i][0]);
     }
     indivList = unique(family_id);
 
-    scheduleTemp = [];
-    for (i = 0; i < output.data.length; i++) {
-        scheduleTemp.push([output.data[i][0], output.data[i][s02_duedate], output.data[i][q01_duedate]]);
-    }
-
-    schedule = [];
+    schedule = []; // organize due dates into single array by person
     for (i = 1; i < indivList.length; i++) {
         if (indivList[i] == "") {continue};
-        entryX = [indivList[i], "", "", "", "", "", ""];
+        entryX = [indivList[i], "", "", "", "", "", "", "", "", ""];
         $.each(getAllIndexes(family_id, indivList[i]), function(j, e) {
-            if (scheduleTemp[e][1] != "") {entryX[1] = scheduleTemp[e][1]};
-            if (scheduleTemp[e][2] != "") {entryX[2] = scheduleTemp[e][2]};
+            switch(output.data[e][eventName]) {
+                case "mom_screening_arm_1":
+                    entryX[1] = output.data[e][w_date];
+                    entryX[2] = output.data[e][s02_duedate];
+                    break;
+                case "mom_trimester_1_arm_1":
+                    entryX[3] = output.data[e][q01_duedate];
+                    break;
+                case "mom_trimester_2_arm_1":
+                    entryX[4] = output.data[e][q01_duedate];
+                    break;
+                case "mom_trimester_3_arm_1":
+                    entryX[5] = output.data[e][q01_duedate];
+            }
         });
         schedule.push(entryX);
     }
 
     noDueDate = [];
+    dropOut = [];
     trimester1 = [];
     trimester2 = [];
     trimester3 = [];
 
+    function checkEmpty(x) {
+        return x!="";
+    }
+
     for (i = 0; i < schedule.length; i++) {
-        if (schedule[i][2] != "") {
-            dueDateX = schedule[i][2];
+        if (schedule[i][1] != "") {
+            dropOut.push(schedule[i][0]);
         } else {
-            dueDateX = schedule[i][1];
-        }
-        if (dueDateX != "") {
-            schedule[i][3] = trimester(dueDateX, -195);
-            schedule[i][5] = dateCut(schedule[i][3]);
-            schedule[i][4] = trimester(dueDateX, -84);
-            schedule[i][6] = dateCut(schedule[i][4]);
-            if (today.getTime() < schedule[i][3].getTime()) {
-                trimester1.push(schedule[i][0]);
-            } else if (schedule[i][3].getTime() < today.getTime() && today.getTime() < schedule[i][4].getTime()) {
-                trimester2.push(schedule[i][0]);
-            } else if (schedule[i][4].getTime() < today.getTime()) {
-                trimester3.push(schedule[i][0]);
+            pos = Math.max(...getAllIndexes(schedule[i].map(checkEmpty), true));
+            dueDateX = schedule[i][pos];
+
+            if (dueDateX != "") {
+                schedule[i][6] = trimester(dueDateX, -195);
+                schedule[i][8] = dateCut(schedule[i][6]);
+                schedule[i][7] = trimester(dueDateX, -84);
+                schedule[i][9] = dateCut(schedule[i][7]);
+                if (today.getTime() < schedule[i][6].getTime()) {
+                    trimester1.push(schedule[i][0]);
+                } else if (schedule[i][6].getTime() < today.getTime() && today.getTime() < schedule[i][7].getTime()) {
+                    trimester2.push(schedule[i][0]);
+                } else if (schedule[i][7].getTime() < today.getTime()) {
+                    trimester3.push(schedule[i][0]);
+                }
             } else {
                 noDueDate.push(schedule[i][0]);
             }
-        } else {
-            noDueDate.push(schedule[i][0]);
         }
     }
+
+    document.getElementById("dropOut").innerHTML = dropOut;
     document.getElementById("tr1").innerHTML = trimester1;
     document.getElementById("tr2").innerHTML = trimester2;
     document.getElementById("tr3").innerHTML = trimester3;
@@ -106,7 +129,7 @@ function Process() {
 
     report = [];
     for (i = 0; i < schedule.length; i++) {
-        report.push([schedule[i][0], schedule[i][1], schedule[i][2], schedule[i][5], schedule[i][6]]);
+        report.push([...schedule[i].slice(0, 6), ...schedule[i].slice(8)]);
     }
 
     $(document).ready(function(){
@@ -118,11 +141,45 @@ function Process() {
                 {className: "dt-body-center" },
                 {className: "dt-body-center" },
                 {className: "dt-body-center" },
-                {className: "dt-body-center" }]
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+            ]
         });
     });
+    document.getElementById("download").disabled = false;
 }
+
+function download() {
+    var content = "data:text/csv;charset=utf-8,";
+    var header = [["Trimester 1:"], trimester1, ["Trimester 2:"], trimester2, ["Trimester 3:"], trimester3, ["Drop Out:"], dropOut, ["No Due Date:"], noDueDate];
+
+    console.log(header);
+
+    header.forEach(function(infoArray, index){
+       dataString = infoArray.join(",");
+       content += dataString + "\n";
+    });
+
+    content = content + "\n Subject ID, Drop Out, Due Date 1, Due Date 2, Due Date 3, Due Date 4, Tr1/Tr2 Cutoff, Tr2/Tr3 Cutoff \n";
+
+    report.forEach(function(infoArray, index){
+        dataString = infoArray.join(",");
+        content += dataString + "\n";
+    });
+
+    var encodedUri = encodeURI(content);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "madres_schedule_report_"+dateCut(today)+".csv");
+    document.body.appendChild(link); // Required for FF
+    link.click()
+}
+
 </script>
+
+
 
 </body>
 </html>

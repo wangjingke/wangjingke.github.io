@@ -17,7 +17,7 @@ function Upload() {
     } else {
         alert("Please upload a valid CSV file.");
     }
-    document.getElementById("Process").disabled = false;
+    document.getElementById("process").disabled = false;
 }
 
 function getAllIndexes(arr, val) {
@@ -33,7 +33,7 @@ function trimester(date, num) {
     var dueString = date.split("-");
     dueDate = new Date(dueString[0], dueString[1]-1, dueString[2]);
     predict = new Date(dueDate.addDays(num));
-    return(predict);
+    return predict;
 }
 
 function dateCut(x) {
