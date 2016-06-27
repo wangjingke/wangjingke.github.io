@@ -21,31 +21,33 @@
 <p> Process data after the upload </p>
 <input type="button" id="process" value="Generate Report" disabled="true" onclick = "process()" />
 <input type="button" id="download" value="Download Report" disabled="true" onclick = "download()" />
-<p> As of today, the following participants are in their first trimester. </p>
-<p id="tr1"></p>
-<p> As of today, the following participants are in their second trimester. </p>
-<p id="tr2"></p>
-<p> As of today, the following participants are in their third trimester. </p>
-<p id="tr3"></p>
-<p> As of today, the following participants dropped out of the study. </p>
-<p id="dropOut"></p>
-<p> As of today, the following participants do not have an expected due date. </p>
-<p id="noDue"></p>
 
-<table id="indivTrimester" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
-    <thead>
-        <tr>
-            <th>Subject ID</th>
-            <th>Drop Out</th>
-            <th>Due Date 1</th>
-            <th>Due Date 2</th>
-            <th>Due Date 3</th>
-            <th>Due Date 4</th>
-            <th>Tr1/Tr2 Cutoff</th>
-            <th>Tr2/Tr3 Cutoff</th>
-        </tr>
-    </thead>
-</table>
+<div id="stage_report" style="display:none;">
+    <p> As of today, the following participants are in their first trimester. </p>
+    <p id="tr1"></p>
+    <p> As of today, the following participants are in their second trimester. </p>
+    <p id="tr2"></p>
+    <p> As of today, the following participants are in their third trimester. </p>
+    <p id="tr3"></p>
+    <p> As of today, the following participants dropped out of the study. </p>
+    <p id="dropOut"></p>
+    <p> As of today, the following participants do not have an expected due date. </p>
+    <p id="noDue"></p>
+    <table id="indivTrimester" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Drop Out</th>
+                <th>Due Date 1</th>
+                <th>Due Date 2</th>
+                <th>Due Date 3</th>
+                <th>Due Date 4</th>
+                <th>Tr1/Tr2 Cutoff</th>
+                <th>Tr2/Tr3 Cutoff</th>
+            </tr>
+        </thead>
+    </table>
+</div>
 
 <script type="text/javascript">
 today = new Date();
@@ -149,6 +151,7 @@ function process() {
         });
     });
     document.getElementById("download").disabled = false;
+    document.getElementById("stage_report").style.display = "block";
 }
 
 function download() {
