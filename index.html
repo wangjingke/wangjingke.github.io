@@ -156,7 +156,7 @@ function process() {
 
 function download() {
     var content = "data:text/csv;charset=utf-8,";
-    var header = [["Trimester 1:"], trimester1, ["Trimester 2:"], trimester2, ["Trimester 3:"], trimester3, ["Drop Out:"], dropOut, ["No Due Date:"], noDueDate];
+    var header = [["As of today "+dateCut(today)], ["Subjects in Trimester 1:"], trimester1, ["Subjects in Trimester 2:"], trimester2, ["subjects in Trimester 3:"], trimester3, ["Subjects Dropped Out:"], dropOut, ["Subjects with No Due Date:"], noDueDate];
 
     console.log(header);
 
