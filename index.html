@@ -165,7 +165,7 @@ function download() {
        content += dataString + "\n";
     });
 
-    content = content + "\n Subject ID, Drop Out, Due Date 1, Due Date 2, Due Date 3, Due Date 4, Tr1/Tr2 Cutoff, Tr2/Tr3 Cutoff \n";
+    content = content + "\nSubject ID,Drop Out,Due Date 1,Due Date 2,Due Date 3,Due Date 4,Tr1/Tr2 Cutoff,Tr2/Tr3 Cutoff\n";
 
     report.forEach(function(infoArray, index){
         dataString = infoArray.join(",");
