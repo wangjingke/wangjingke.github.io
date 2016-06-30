@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" charset="utf-8"> </script>
+<script src="./js/moment.min.js"></script>
+<script src="./js/combodate.js"></script>
+<script src="./js/madres_schedule_functions.js"></script>
+</head>
+
+<body>
+<h1>MADRES Trimester Window Calculator</h1>
+
+<p>
+     Please input the expected due date
+</p>
+<input type="text" id="dueDate" data-format="YYYY-MM-DD" data-template="YYYY MMM D" name="date">
+<input type="button" id="submit" value="Submit" onclick = "submit()"/>
+
+<div id="results" style="display:none;">
+    <p>All the dates are shown in the format as YYYY-MM-DD</p>
+    <p>Trimester 2 call window (18w0d to 27w6d): <span id="tr2"></span></p>
+    <p>Trimester 3 call window (28w0d to 34w6d): <span id="tr3c"></span></p>
+    <p>Trimester 3 visit window (30w0d to 34w6d): <span id="tr3v"></span></p>
+    <p>Gestational age as of today (<span id="today"></span>): <span id="gestAge"></span></p>
+</div>
+
+<script>
+today = new Date()
+
+$(function(){
+    $('#dueDate').combodate({
+        firstItem: "name",
+        minYear: 2016,
+        maxYear: 2020
+    });
+});
+
+
+function submit() {
+    var dueDate = $("#dueDate").combodate("getValue", "YYYY-MM-DD");
+    tr2Start = trimester(dueDate, -154);
+    tr2End = trimester(dueDate, -85);
+    tr3cStart = trimester(dueDate, -84);
+    tr3cEnd = trimester(dueDate, -36);
+    tr3vStart = trimester(dueDate, -70);
+    tr3vEnd = trimester(dueDate, -36);
+
+    function gestationalAge(today, dueDate) {
+        for(i = 0; i <= 281; i++) {
+            dayX = trimester(dueDate, i-280);
+            if (dateCut(dayX)==dateCut(today)) {
+                return(Math.floor(i/7) + "w" + i%7 + "d");
+                break;
+            }
+        }
+        return("Out of range")
+    }
+
+    gestAge = gestationalAge(today, dueDate)
+
+    document.getElementById("tr2").innerHTML = "From " + dateCut(tr2Start) + " To " + dateCut(tr2End);
+    document.getElementById("tr3c").innerHTML = "From " + dateCut(tr3cStart) + " To " + dateCut(tr3cEnd);
+    document.getElementById("tr3v").innerHTML = "From " + dateCut(tr3vStart) + " To " + dateCut(tr3vEnd);
+    document.getElementById("gestAge").innerHTML = gestAge;
+    document.getElementById('today').innerHTML = dateCut(today);
+
+
+    document.getElementById("results").style.display = "block";
+}
+
+
+
+</script>
+
+</body>
+
+</html>

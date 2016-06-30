@@ -1,5 +1,5 @@
 
-function Upload() {
+function upload() {
     var fileUpload = document.getElementById("fileUpload");
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
     if (regex.test(fileUpload.value.toLowerCase())) {
@@ -31,7 +31,7 @@ function getAllIndexes(arr, val) {
 Date.prototype.addDays=function(d){return new Date(this.valueOf()+864E5*d)};
 function trimester(date, num) {
     var dueString = date.split("-");
-    dueDate = new Date(dueString[0], dueString[1]-1, dueString[2]);
+    dueDate = new Date(dueString[0], dueString[1]-1, dueString[2]); // year, month, day
     predict = new Date(dueDate.addDays(num));
     return predict;
 }
