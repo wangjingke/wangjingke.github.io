@@ -29,10 +29,10 @@ function getAllIndexes(arr, val) {
 }
 
 Date.prototype.addDays=function(d){return new Date(this.valueOf()+864E5*d)};
-function trimester(date, num) {
-    var dueString = date.split("-");
-    dueDate = new Date(dueString[0], dueString[1]-1, dueString[2]); // year, month, day
-    predict = new Date(dueDate.addDays(num));
+function trimester(day, num) {
+    var dayString = day.split("-");
+    dayDate = new Date(dayString[0], dayString[1]-1, dayString[2]); // year, month, day
+    predict = new Date(dayDate.addDays(num));
     return predict;
 }
 
@@ -46,4 +46,15 @@ function unique(list) {
     if ($.inArray(e, result) == -1) result.push(e);
   });
   return result;
+}
+
+function gestationalAge(day, dueDate) {
+    for(i = 0; i <= 281; i++) {
+        dayX = trimester(dueDate, i-280);
+        if (dateCut(dayX)==dateCut(day)) {
+            return(Math.floor(i/7) + "w" + i%7 + "d");
+            break;
+        }
+    }
+    return("Out of range")
 }
