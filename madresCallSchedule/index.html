@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8"  />
     <title>Index page for madres subject tracking</title>
+    <script src="./js/papaparse.min.js"> </script>
+    <script src="./js/madres_schedule_functions.js"> </script>
 </head>
 
 <body>
@@ -19,6 +21,11 @@
 
 <script type="text/javascript">
 today = new Date();
+document.getElementById("today").innerHTML = "Today is " + dateCut(today);
+
+function process() {
+
+}
 
 </script>
 
