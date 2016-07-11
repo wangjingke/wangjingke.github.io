@@ -97,7 +97,6 @@ function process() {
     scheduleString = JSON.stringify(schedule); // convert array to JSON
     console.log(scheduleString);
     setCookie("schedule", scheduleString, 0.125); // cookie expires in 3hr
-    console.log(test);
 
     // display options
     document.getElementById("stage_report").style.display = "block";
