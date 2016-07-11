@@ -1,6 +1,6 @@
 
-function upload() {
-    var fileUpload = document.getElementById("fileUpload");
+function upload(inputFile) {
+    var fileUpload = document.getElementById(inputFile);
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
     if (regex.test(fileUpload.value.toLowerCase())) {
         if (typeof (FileReader) != "undefined") {
@@ -9,7 +9,7 @@ function upload() {
             reader.onload = loadHandler;
             function loadHandler(event) {
                 var csv = event.target.result;
-                output = Papa.parse(csv);
+                redCap = Papa.parse(csv);
             }
         } else {
             alert("This browser does not support HTML5.");
@@ -58,3 +58,13 @@ function gestationalAge(day, dueDate) {
     }
     return("Out of range")
 }
+
+function arrayGrow(length) {
+	var empty = [];
+	for (i = 0; i < length; i++) {
+		empty.push("");
+	}
+	return empty;
+}
+
+

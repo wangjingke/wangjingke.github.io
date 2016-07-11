@@ -5,13 +5,14 @@
     <title>Index page for madres subject tracking</title>
     <script src="./js/papaparse.min.js"> </script>
     <script src="./js/madres_schedule_functions.js"> </script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" charset="utf-8"> </script>
 </head>
 
 <body>
 <h1>MADRES Call Schedule</h1>
-<p id="tody"></p>
+<p id="today"></p>
 <input type="file" id="redcapReport" />
-<input type="button" id="upload" value="Upload" onclid="upload()" />
+<input type="button" id="upload" value="Upload" onclick="upload(inputFile = 'redcapReport')"/>
 <p>Process uploaded data</p>
 <input type="button" id="process" value="Generate Report" disable="true" onclick="process()" />
 <p></p>
@@ -24,6 +25,40 @@ today = new Date();
 document.getElementById("today").innerHTML = "Today is " + dateCut(today);
 
 function process() {
+    keys = redCap.data[0];
+
+    function subjectID(input, keys, trim) {
+        var temp = [];
+        for (i = 1; i < input.data.length; i++) { //start from 1, skip the header line
+            temp.push(input.data[i][keys.indexOf("family_id")]);
+        }
+        if (trim) {
+            return unique(temp);
+        } else {
+            return temp;
+        }
+    }
+    indivList = subjectID(input = redCap, keys = keys, trim = true); // list of all subjects
+    fullList = subjectID(input = redCap, keys = keys, trim = false); // list of all subjectID inline of redcap output
+
+    // customized variable names
+    header = ["SubjectID", "DueDate", "Withdraw", "Tr2_Anthr", "Tr2_PSE", "Tr2_DadInfo"];
+
+    function schedule(data, list, header) {
+        entryX = arrayGrow(length = header.length);
+        function dueDate() {
+
+        }
+
+
+    }
+    console.log(entryX);
+
+
+
+
+
+
 
 }
 
