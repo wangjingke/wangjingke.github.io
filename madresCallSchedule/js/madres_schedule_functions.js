@@ -29,7 +29,7 @@ function getAllIndexes(arr, val) {
 }
 
 Date.prototype.addDays=function(d){return new Date(this.valueOf()+864E5*d)};
-function trimester(day, num) {
+function countDay(day, num) {
     var dayString = day.split("-");
     dayDate = new Date(dayString[0], dayString[1]-1, dayString[2]); // year, month, day
     predict = new Date(dayDate.addDays(num));
@@ -50,7 +50,7 @@ function unique(list) {
 
 function gestationalAge(day, dueDate) {
     for(var i = 0; i <= 281; i++) {
-        dayX = trimester(dueDate, i-280);
+        dayX = countDay(dueDate, i-280);
         if (dateCut(dayX)==dateCut(day)) {
             return(Math.floor(i/7) + "w" + i%7 + "d");
             break;

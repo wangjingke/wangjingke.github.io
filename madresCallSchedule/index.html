@@ -8,6 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script src="./js/moment.min.js"></script>
     <script src="./js/combodate.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -23,6 +25,22 @@
 <p></p>
 <div id="stage_report" style="display:none;">
     <a href="./reports/trimester2report.html">Trimester 2 Report</a>
+    <p></p>
+    <table id="indivTrimester" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Due Date</th>
+                <th>Drop Out</th>
+                <th>Tr2 Call Start</th>
+                <th>Tr2 Call End</th>
+                <th>Tr3 Call Start</th>
+                <th>Tr3 Call End</th>
+                <th>Tr3 Visit Start</th>
+                <th>Tr3 Visit End</th>
+            </tr>
+        </thead>
+    </table>
 </div>
 
 <script type="text/javascript">
@@ -57,7 +75,7 @@ function process() {
     indivList = subjectID(input = redCap.data, keys = keys, trim = true); // list of all subjects
     fullList = subjectID(input = redCap.data, keys = keys, trim = false); // list of all subjectID inline of redcap output
     // customized variable names
-    header = ["SubjectID", "DueDate", "Withdraw", "Tr2_Anthr", "Tr2_PSE", "Tr2_DadInfo"];
+    header = ["SubjectID", "DueDate", "Withdraw", "Tr2_Start", "Tr2_End", "Tr3c_Start", "Tr3c_End", "Tr3v_Start", "Tr3v_End", "Tr2_Anthr", "Tr2_PSE", "Tr2_DadInfo"];
 
     function schedule(input, header) {
         function dueDate(input, lineNum) {
@@ -87,7 +105,7 @@ function process() {
         }
 
         var schedule = [header];
-        for (i = 1; i < indivList.length; i++) { // start from 1 to skip the header line (subjectID)
+        for (var i = 1; i < indivList.length; i++) { // start from 1 to skip the header line (subjectID)
             if (indivList[i] == "") {continue};
             var lineListX = getAllIndexes(fullList, indivList[i]);
             var entryX = arrayGrow(length = header.length);
@@ -107,15 +125,50 @@ function process() {
             });
             schedule.push(entryX);
         }
+        // calculate trimester windows
+        for (var i = 1; i < schedule.length; i++) { // skip header i==0
+            if (schedule[i][header.indexOf("Withdraw")]=="" && schedule[i][header.indexOf("DueDate")]!="") {
+                schedule[i][header.indexOf("Tr2_Start")] = dateCut(countDay(schedule[i][header.indexOf("DueDate")], -154));
+                schedule[i][header.indexOf("Tr2_End")] = dateCut(countDay(schedule[i][header.indexOf("DueDate")], -85));
+                schedule[i][header.indexOf("Tr3c_Start")] = dateCut(countDay(schedule[i][header.indexOf("DueDate")], -84));
+                schedule[i][header.indexOf("Tr3c_End")] = dateCut(countDay(schedule[i][header.indexOf("DueDate")], -36));
+                schedule[i][header.indexOf("Tr3v_Start")] = dateCut(countDay(schedule[i][header.indexOf("DueDate")], -70));
+                schedule[i][header.indexOf("Tr3v_End")] = dateCut(countDay(schedule[i][header.indexOf("DueDate")], -36));
+            }
+        }
     return schedule;
     }
     schedule = schedule(input = redCap.data, header = header);
+    console.log(schedule);
     // output schedule as cookie
     scheduleString = JSON.stringify(schedule); // convert array to JSON
     setCookie("schedule", scheduleString, 0.125); // cookie expires in 3hr
 
     // display options
     document.getElementById("stage_report").style.display = "block";
+    report = [];
+    for (i = 1; i < schedule.length; i++) { // skip header i ==0
+        report.push(schedule[i].slice(0, 9));
+    }
+
+    $(document).ready(function(){
+        $("#indivTrimester").DataTable({
+            paging: true,
+            data: report,
+            "columns": [
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" }
+            ]
+        });
+    });
+
 }
 
 </script>

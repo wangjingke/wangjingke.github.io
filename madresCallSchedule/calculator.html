@@ -50,12 +50,12 @@ var today = new Date()
 
 function submit() {
     var dueDate = $("#dueDate").combodate("getValue", "YYYY-MM-DD");
-    tr2Start = trimester(dueDate, -154);
-    tr2End = trimester(dueDate, -85);
-    tr3cStart = trimester(dueDate, -84);
-    tr3cEnd = trimester(dueDate, -36);
-    tr3vStart = trimester(dueDate, -70);
-    tr3vEnd = trimester(dueDate, -36);
+    tr2Start = countDay(dueDate, -154);
+    tr2End = countDay(dueDate, -85);
+    tr3cStart = countDay(dueDate, -84);
+    tr3cEnd = countDay(dueDate, -36);
+    tr3vStart = countDay(dueDate, -70);
+    tr3vEnd = countDay(dueDate, -36);
 
     gestAgeToday = gestationalAge(today, dueDate)
 
@@ -66,8 +66,8 @@ function submit() {
     document.getElementById('today').innerHTML = dateCut(today);
 
     var refDay = $("#refDate").combodate("getValue", "YYYY-MM-DD");
-    gestAgeX = gestationalAge(trimester(refDay, 0), dueDate);
-    document.getElementById('referenceDate').innerHTML = dateCut(trimester(refDay, 0));
+    gestAgeX = gestationalAge(countDay(refDay, 0), dueDate);
+    document.getElementById('referenceDate').innerHTML = dateCut(countDay(refDay, 0));
     document.getElementById('gestationalAgeX').innerHTML = gestAgeX;
 
     document.getElementById("results").style.display = "block";
