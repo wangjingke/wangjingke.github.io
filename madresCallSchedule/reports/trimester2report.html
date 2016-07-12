@@ -9,11 +9,47 @@
 
 <body>
 <h1>MADRES Trimester 2 report</h1>
+<p>The reference date (refDate) you selected is <span id="refDate"></span></p>
+<input type="button" id="download" value="Download Report" onclick=download() />
+
+<div id="tr2_inWindow_needCall" style="display:block;">
+    <p>Subjects in trimester 2 call window and never started questionnaire</p>
+    <table id="tr2_inWindow_needCall_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Due Date</th>
+                <th>18w0d Date</th>
+                <th>27w6d Date</th>
+                <th>Gestational Age as of refDate</th>
+            </tr>
+        </thead>
+    </table>
+</div>
 
 <script type="text/javascript">
 refDay = getCookie("refDay");
+document.getElementById("refDate").innerHTML = refDay;
 schedule = JSON.parse(getCookie("schedule"));
 
+// add two variable to the schedule
+schedule[0].push.apply(schedule[0], ["Tr2_inWindow", "Tr2_Ques"]);
+header = schedule[0];
+for (i = 1; i < schedule.length; i++) {
+    if (schedule[i][header.indexOf("Tr2_PSE")]=="" && schedule[i][header.indexOf("Tr2_DadInfo")]=="") {schedule[i][header.indexOf("Tr2_Ques")]=="neverStarted"}
+    if (schedule[i][header.indexOf("Tr2_PSE")]!="" && schedule[i][header.indexOf("Tr2_DadInfo")]=="") {schedule[i][header.indexOf("Tr2_Ques")]=="incomplete"}
+    if (schedule[i][header.indexOf("Tr2_PSE")]!="" && schedule[i][header.indexOf("Tr2_DadInfo")]!="") {schedule[i][header.indexOf("Tr2_Ques")]=="done"}
+    // in window for tr2, at least 21 days has passed from visit 2 to reference date, use countDay to convert string to date
+    if (
+        countDay(schedule[i][header.indexOf("Tr2_Start")], 0).getTime() < countDay(refDate, 0).getTime() &&
+        countDay(refDate, 0).getTime() < countDay(schedule[i][header.indexOf("Tr2_End")]).getTime() &&
+        countDay(refDate, 0).getTime() > countDay(schedule[i][header.indexOf("Tr1_Anthr")], 21).getTime()
+    ) {
+        schedule[i][header.indexOf("Tr2_inWindow")]=true;
+    } else {
+        schedule[i][header.indexOf("Tr2_inWindow")]=false;
+    }
+}
 
 
 </script>

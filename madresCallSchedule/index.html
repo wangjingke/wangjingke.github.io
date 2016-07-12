@@ -75,7 +75,7 @@ function process() {
     indivList = subjectID(input = redCap.data, keys = keys, trim = true); // list of all subjects
     fullList = subjectID(input = redCap.data, keys = keys, trim = false); // list of all subjectID inline of redcap output
     // customized variable names
-    header = ["SubjectID", "DueDate", "Withdraw", "Tr2_Start", "Tr2_End", "Tr3c_Start", "Tr3c_End", "Tr3v_Start", "Tr3v_End", "Tr2_Anthr", "Tr2_PSE", "Tr2_DadInfo"];
+    header = ["SubjectID", "DueDate", "Withdraw", "Tr2_Start", "Tr2_End", "Tr3c_Start", "Tr3c_End", "Tr3v_Start", "Tr3v_End", "Tr1_Anthr", "Tr2_PSE", "Tr2_DadInfo"];
 
     function schedule(input, header) {
         function dueDate(input, lineNum) {
@@ -116,7 +116,7 @@ function process() {
                     entryX[header.indexOf("Withdraw")] = input[lineX][keys.indexOf("w_date")];
                 }
                 if (input[lineX][keys.indexOf("redcap_event_name")] == "mom_trimester_1_arm_1") {
-                    entryX[header.indexOf("Tr2_Anthr")] = input[lineX][keys.indexOf("anth_date")];
+                    entryX[header.indexOf("Tr1_Anthr")] = input[lineX][keys.indexOf("anth_date")];
                 }
                 if (input[lineX][keys.indexOf("redcap_event_name")] == "mom_trimester_2_arm_1") {
                     entryX[header.indexOf("Tr2_PSE")] = input[lineX][keys.indexOf("q02_date")];
@@ -139,7 +139,6 @@ function process() {
     return schedule;
     }
     schedule = schedule(input = redCap.data, header = header);
-    console.log(schedule);
     // output schedule as cookie
     scheduleString = JSON.stringify(schedule); // convert array to JSON
     setCookie("schedule", scheduleString, 0.125); // cookie expires in 3hr
@@ -168,7 +167,6 @@ function process() {
             ]
         });
     });
-
 }
 
 </script>
