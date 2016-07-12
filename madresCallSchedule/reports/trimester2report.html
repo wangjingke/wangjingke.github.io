@@ -27,11 +27,17 @@ for (var i = 1; i < schedule.length; i++) {
     if (schedule[i][header.indexOf("Tr2_PSE")]!="" && schedule[i][header.indexOf("Tr2_DadInfo")]=="") {schedule[i][header.indexOf("Tr2_Ques")]="incomplete"}
     if (schedule[i][header.indexOf("Tr2_PSE")]!="" && schedule[i][header.indexOf("Tr2_DadInfo")]!="") {schedule[i][header.indexOf("Tr2_Ques")]="done"}
     // in window for tr2, at least 21 days has passed from visit 2 to reference date, use countDay to convert string to date
-    if (
-        countDay(schedule[i][header.indexOf("Tr2_Start")], 0).getTime() < countDay(refDay, 0).getTime() &&
-        countDay(refDay, 0).getTime() < countDay(schedule[i][header.indexOf("Tr2_End")]).getTime() &&
-        countDay(refDay, 0).getTime() > countDay(schedule[i][header.indexOf("Tr1_Anthr")], 21).getTime()
-    ) {
+    var tr2_startX = "";
+    var tr2_endX = "";
+    if (schedule[i][header.indexOf("Tr1_Anthr")==""]) {
+        tr2_startX = countDay(schedule[i][header.indexOf("Tr2_Start")], 0).getTime();
+        tr2_endX = countDay(schedule[i][header.indexOf("Tr2_End")], 0).getTime();
+    } else {
+        tr2_startX = Math.max(countDay(schedule[i][header.indexOf("Tr2_Start")], 0).getTime(), countDay(schedule[i][header.indexOf("Tr1_Anthr")], 0).getTime());
+        tr2_endX = countDay(schedule[i][header.indexOf("Tr2_End")], 0).getTime();
+    }
+
+    if (tr2_startX < countDay(refDay, 0).getTime() && countDay(refDay, 0).getTime() < tr2_endX) {
         schedule[i][header.indexOf("Tr2_inWindow")]=true;
     } else {
         schedule[i][header.indexOf("Tr2_inWindow")]=false;
