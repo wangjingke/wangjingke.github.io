@@ -49,7 +49,7 @@ for (var i = 1; i < schedule.length; i++) {
 }
 </script>
 
-<div id="tr2_inWindow_needCall" style="display:block;">
+<div id="tr2_inWindow_needCall" style="display:none;">
     <p>Subjects in trimester 2 call window and never started questionnaire (total = <span id="tr2_inWindow_needCall_num"></span>)</p>
     <p id="tr2_inWindow_needCall_list"></p>
     <table id="tr2_inWindow_needCall_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
@@ -87,20 +87,22 @@ tr2_inWindow_needCall_report = [];
 for(var i = 1; i < senario1.length; i++) { //skip header
     tr2_inWindow_needCall_report.push([senario1[i][header.indexOf("SubjectID")], senario1[i][header.indexOf("DueDate")], senario1[i][header.indexOf("Tr2_Start")], senario1[i][header.indexOf("Tr2_End")], senario1[i][header.indexOf("GestAge")]]);
 }
-
-$(document).ready(function(){
-    $("#tr2_inWindow_needCall_table").DataTable({
-        paging: true,
-        data: tr2_inWindow_needCall_report, //remove the header
-        "columns": [
-            {className: "dt-body-center" },
-            {className: "dt-body-center" },
-            {className: "dt-body-center" },
-            {className: "dt-body-center" },
-            {className: "dt-body-center" }
-        ]
+if (tr2_inWindow_needCall_report.length > 0) {
+    $(document).ready(function(){
+        $("#tr2_inWindow_needCall_table").DataTable({
+            paging: true,
+            data: tr2_inWindow_needCall_report, //remove the header
+            "columns": [
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" },
+                {className: "dt-body-center" }
+            ]
+        });
     });
-});
+    document.getElementById("tr2_inWindow_needCall").style.display = "block";
+}
 
 </script>
 
