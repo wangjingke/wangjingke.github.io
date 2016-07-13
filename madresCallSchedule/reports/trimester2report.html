@@ -197,7 +197,7 @@ for (var i = 1; i < schedule.length; i++) {
         $(document).ready(function(){
             $("#tr2_inWindow_incomplete_table").DataTable({
                 paging: true,
-                data: tr2_completed_report, //remove the header
+                data: tr2_inWindow_incomplete_report, //remove the header
                 "columns": [
                     {className: "dt-body-center" },
                     {className: "dt-body-center" },
@@ -210,7 +210,7 @@ for (var i = 1; i < schedule.length; i++) {
     </script>
 </div>
 
-<!-- scenario 4, subjects missed all trimester 2 questionnaires, including drop-outs and out of window ones -->
+<!-- scenario 4, subjects out of trimester 2 window with incompleted trimester 2 questionnaires -->
 <div id="tr2_outWindow_incomplete" style="display:none;">
     <h3>Subjects out of trimester 2 call window with incomplete trimester 2 questionnaires (total = <span id="tr2_outWindow_incomplete_num"></span>)</h3>
     <p id="tr2_outWindow_incomplete_list"></p>
@@ -246,7 +246,7 @@ for (var i = 1; i < schedule.length; i++) {
         $(document).ready(function(){
             $("#tr2_outWindow_incomplete_table").DataTable({
                 paging: true,
-                data: tr2_completed_report, //remove the header
+                data: tr2_outWindow_incomplete_report, //remove the header
                 "columns": [
                     {className: "dt-body-center" },
                     {className: "dt-body-center" },
@@ -259,6 +259,109 @@ for (var i = 1; i < schedule.length; i++) {
     </script>
 </div>
 
+<!-- scenario 5, subjects missed all trimester 2 questionnaires and out of window, excluding dropout-->
+<div id="tr2_outWindow_neverStarted" style="display:none;">
+    <h3>Subjects out of trimester 2 call window with none of the trimester 2 questionnaires completed (total = <span id="tr2_outWindow_neverStarted_num"></span>)</h3>
+    <p id="tr2_outWindow_neverStarted_list"></p>
+    <table id="tr2_outWindow_neverStarted_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='5'>
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Due Date</th>
+                <th>Gestational Age as of refDate</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+    scenario5 = [schedule[0]];
+    for (var i = 1; i < schedule.length; i++) {
+        if (schedule[i][header.indexOf("Withdraw")]=="" && schedule[i][header.indexOf("Tr2_Ques")]=="neverStarted" && schedule[i][header.indexOf("Tr2_inWindow")]==false) {
+            scenario5.push(schedule[i]);
+        }
+    }
+    tr2_outWindow_neverStarted_list = [];
+    for (var i = 1; i < scenario5.length; i++) {tr2_outWindow_neverStarted_list.push(scenario5[i][header.indexOf("SubjectID")])}
+    document.getElementById("tr2_outWindow_neverStarted_num").innerHTML = scenario5.length - 1;
+    document.getElementById("tr2_outWindow_neverStarted_list").innerHTML = tr2_outWindow_neverStarted_list;
+    tr2_outWindow_neverStarted_report = [];
+    for (var i = 1; i < scenario5.length; i++) {
+        tr2_outWindow_neverStarted_report.push([
+            scenario5[i][header.indexOf("SubjectID")],
+            scenario5[i][header.indexOf("DueDate")],
+            scenario5[i][header.indexOf("GestAge")]
+        ])
+    }
+    if (tr2_outWindow_neverStarted_report.length > 0) {
+        $(document).ready(function(){
+            $("#tr2_outWindow_neverStarted_table").DataTable({
+                paging: true,
+                data: tr2_outWindow_neverStarted_report, //remove the header
+                "columns": [
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" }
+                ]
+            });
+        });
+        document.getElementById("tr2_outWindow_neverStarted").style.display = "block";
+    }
+    </script>
+</div>
+
+<!-- scenario 6, drop-outs -->
+<div id="tr2_dropout" style="display:none;">
+    <h3>Subjects dropped out of the study (total = <span id="tr2_dropout_num"></span>)</h3>
+    <p id="tr2_dropout_list"></p>
+    <table id="tr2_dropout_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='5'>
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Due Date</th>
+                <th>Drop Out</th>
+                <th>Trimester 2 Questionnaires</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+    scenario6 = [schedule[0]];
+    for (var i = 1; i < schedule.length; i++) {if (schedule[i][header.indexOf("Withdraw")]!="") {scenario6.push(schedule[i])}}
+    tr2_dropout_list = [];
+    for (var i = 1; i < scenario6.length; i++) {tr2_dropout_list.push(scenario6[i][header.indexOf("SubjectID")])}
+    document.getElementById("tr2_dropout_num").innerHTML = scenario6.length - 1;
+    document.getElementById("tr2_dropout_list").innerHTML = tr2_dropout_list;
+    tr2_dropout_report = [];
+    for (var i = 1; i < scenario6.length; i++) {
+        tr2_dropout_report.push([
+            scenario6[i][header.indexOf("SubjectID")],
+            scenario6[i][header.indexOf("DueDate")],
+            scenario6[i][header.indexOf("Withdraw")],
+            scenario6[i][header.indexOf("Tr2_Ques")]
+        ])
+    }
+    if (tr2_dropout_report.length > 0) {
+        $(document).ready(function(){
+            $("#tr2_dropout_table").DataTable({
+                paging: true,
+                data: tr2_dropout_report, //remove the header
+                "columns": [
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" }
+                ]
+            });
+        });
+        document.getElementById("tr2_dropout").style.display = "block";
+    }
+    </script>
+</div>
+
+console.log(scenario1);
+console.log(scenario2);
+console.log(scenario3);
+console.log(scenario4);
+console.log(scenario5);
+console.log(scenario6);
 
 
 
