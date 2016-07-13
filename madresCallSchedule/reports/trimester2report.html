@@ -360,19 +360,19 @@ for (var i = 1; i < schedule.length; i++) {
 function download() {
     var content = "data:text/csv;charset=utf-8,";
     var scenarios = [
-        ["As of the reference day "+refDay],
-        [document.getElementById("tr2_inWindow_needCall_title")],
-        [tr2_inWindow_needCall_list],
-        [document.getElementById("tr2_completed_title")],
-        [tr2_completed_list],
-        [document.getElementById("tr2_inWindow_incomplete_title")],
-        [tr2_inWindow_incomplete_list],
-        [document.getElementById("tr2_outWindow_incomplete_title")],
-        [tr2_outWindow_incomplete_list],
-        [document.getElementById("tr2_outWindow_neverStarted_title")],
-        [tr2_outWindow_neverStarted_list],
-        [document.getElementById("tr2_dropout_title")],
-        [tr2_dropout_list]
+        "As of the reference day "+refDay,
+        document.getElementById("tr2_inWindow_needCall_title").innerHTML,
+        tr2_inWindow_needCall_list,
+        document.getElementById("tr2_completed_title").innerHTML,
+        tr2_completed_list,
+        document.getElementById("tr2_inWindow_incomplete_title").innerHTML,
+        tr2_inWindow_incomplete_list,
+        document.getElementById("tr2_outWindow_incomplete_title").innerHTML,
+        tr2_outWindow_incomplete_list,
+        document.getElementById("tr2_outWindow_neverStarted_title").innerHTML,
+        tr2_outWindow_neverStarted_list,
+        document.getElementById("tr2_dropout_title").innerHTML,
+        tr2_dropout_list
     ];
 
     scenarios.forEach(function(infoArray, index){
