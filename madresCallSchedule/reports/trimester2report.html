@@ -367,17 +367,17 @@ function download() {
     var content = "data:text/csv;charset=utf-8,";
     var scenarios = [
         ["As of the reference day "+refDay],
-        [document.getElementById("tr2_inWindow_needCall_title").innerHTML+", total = "+tr2_inWindow_needCall_num],
+        [document.getElementById("tr2_inWindow_needCall_title").innerHTML+"; total = "+document.getElementById("tr2_inWindow_needCall_num").innerHTML],
         tr2_inWindow_needCall_list,
-        [document.getElementById("tr2_completed_title").innerHTML+", total = "+tr2_completed_num],
+        [document.getElementById("tr2_completed_title").innerHTML+"; total = "+document.getElementById("tr2_completed_num").innerHTML],
         tr2_completed_list,
-        [document.getElementById("tr2_inWindow_incomplete_title").innerHTML+", total = "+tr2_inWindow_incomplete_num],
+        [document.getElementById("tr2_inWindow_incomplete_title").innerHTML+"; total = "+document.getElementById("tr2_inWindow_incomplete_num").innerHTML],
         tr2_inWindow_incomplete_list,
-        [document.getElementById("tr2_outWindow_incomplete_title").innerHTML+", total = "+tr2_outWindow_incomplete_num],
+        [document.getElementById("tr2_outWindow_incomplete_title").innerHTML+"; total = "+document.getElementById("tr2_outWindow_incomplete_num").innerHTML],
         tr2_outWindow_incomplete_list,
-        [document.getElementById("tr2_outWindow_neverStarted_title").innerHTML+", total = "+tr2_outWindow_neverStarted_num],
+        [document.getElementById("tr2_outWindow_neverStarted_title").innerHTML+"; total = "+document.getElementById("tr2_outWindow_neverStarted_num").innerHTML],
         tr2_outWindow_neverStarted_list,
-        [document.getElementById("tr2_dropout_title").innerHTML+", total = "+tr2_dropout_num],
+        [document.getElementById("tr2_dropout_title").innerHTML+", total = "+document.getElementById("tr2_dropout_num").innerHTML],
         tr2_dropout_list
     ];
 
