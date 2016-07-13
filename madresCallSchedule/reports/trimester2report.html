@@ -375,7 +375,7 @@ function download() {
         [tr2_dropout_list]
     ];
 
-    header.forEach(function(infoArray, index){
+    scenarios.forEach(function(infoArray, index){
        dataString = infoArray.join(";");
        content += dataString + "\n";
     });
