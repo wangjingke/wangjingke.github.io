@@ -51,7 +51,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 <!--scenario 1, subjects in trimester call window and need to complete questions -->
 <div id="tr2_inWindow_needCall" style="display:none;">
-    <h3>Subjects in trimester 2 call window and never started questionnaire (total = <span id="tr2_inWindow_needCall_num"></span>)</h3>
+    <h3 id="tr2_inWindow_needCall_title">Subjects in trimester 2 call window and never started questionnaire (total = <span id="tr2_inWindow_needCall_num"></span>)</h3>
     <p id="tr2_inWindow_needCall_list"></p>
     <table id="tr2_inWindow_needCall_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
         <thead>
@@ -110,7 +110,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 <!-- scenario 2, subjected completed trimester 2 questionnaire-->
 <div id="tr2_completed" style="display:none;">
-    <h3>Subjects completed trimester 2 questionnaire (total = <span id="tr2_completed_num"></span>)</h3>
+    <h3 id="tr2_completed_title">Subjects completed trimester 2 questionnaire (total = <span id="tr2_completed_num"></span>)</h3>
     <p id="tr2_completed_list"></p>
     <table id="tr2_completed_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='5'>
         <thead>
@@ -163,7 +163,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 <!-- scenario 3, subjects in trimester 2 window but with incompleted trimester 2 questionnaires -->
 <div id="tr2_inWindow_incomplete" style="display:none;">
-    <h3>Subjects in trimester 2 call window with incomplete trimester 2 questionnaires (total = <span id="tr2_inWindow_incomplete_num"></span>)</h3>
+    <h3 id="tr2_inWindow_incomplete_title">Subjects in trimester 2 call window with incomplete trimester 2 questionnaires (total = <span id="tr2_inWindow_incomplete_num"></span>)</h3>
     <p id="tr2_inWindow_incomplete_list"></p>
     <table id="tr2_inWindow_incomplete_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
         <thead>
@@ -212,7 +212,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 <!-- scenario 4, subjects out of trimester 2 window with incompleted trimester 2 questionnaires -->
 <div id="tr2_outWindow_incomplete" style="display:none;">
-    <h3>Subjects out of trimester 2 call window with incomplete trimester 2 questionnaires (total = <span id="tr2_outWindow_incomplete_num"></span>)</h3>
+    <h3 id="tr2_outWindow_incomplete_title">Subjects out of trimester 2 call window with incomplete trimester 2 questionnaires (total = <span id="tr2_outWindow_incomplete_num"></span>)</h3>
     <p id="tr2_outWindow_incomplete_list"></p>
     <table id="tr2_outWindow_incomplete_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='5'>
         <thead>
@@ -261,7 +261,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 <!-- scenario 5, subjects missed all trimester 2 questionnaires and out of window, excluding dropout-->
 <div id="tr2_outWindow_neverStarted" style="display:none;">
-    <h3>Subjects out of trimester 2 call window with none of the trimester 2 questionnaires completed (total = <span id="tr2_outWindow_neverStarted_num"></span>)</h3>
+    <h3 id="tr2_outWindow_neverStarted_title">Subjects out of trimester 2 call window with none of the trimester 2 questionnaires completed (total = <span id="tr2_outWindow_neverStarted_num"></span>)</h3>
     <p id="tr2_outWindow_neverStarted_list"></p>
     <table id="tr2_outWindow_neverStarted_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='5'>
         <thead>
@@ -310,7 +310,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 <!-- scenario 6, drop-outs -->
 <div id="tr2_dropout" style="display:none;">
-    <h3>Subjects dropped out of the study (total = <span id="tr2_dropout_num"></span>)</h3>
+    <h3 id="tr2_dropout_title">Subjects dropped out of the study (total = <span id="tr2_dropout_num"></span>)</h3>
     <p id="tr2_dropout_list"></p>
     <table id="tr2_dropout_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='5'>
         <thead>
@@ -357,16 +357,37 @@ for (var i = 1; i < schedule.length; i++) {
 </div>
 
 <script type="text/javascript">
-console.log(scenario1);
-console.log(scenario2);
-console.log(scenario3);
-console.log(scenario4);
-console.log(scenario5);
-console.log(scenario6);
+function download() {
+    var content = "data:text/csv;charset=utf-8,";
+    var scenarios = [
+        ["As of the reference day "+refDay],
+        [document.getElementById("tr2_inWindow_needCall_title")],
+        [tr2_inWindow_needCall_list],
+        [document.getElementById("tr2_completed_title")],
+        [tr2_completed_list],
+        [document.getElementById("tr2_inWindow_incomplete_title")],
+        [tr2_inWindow_incomplete_list],
+        [document.getElementById("tr2_outWindow_incomplete_title")],
+        [tr2_outWindow_incomplete_list],
+        [document.getElementById("tr2_outWindow_neverStarted_title")],
+        [tr2_outWindow_neverStarted_list],
+        [document.getElementById("tr2_dropout_title")],
+        [tr2_dropout_list]
+    ];
+
+    header.forEach(function(infoArray, index){
+       dataString = infoArray.join(";");
+       content += dataString + "\n";
+    });
+
+    var encodedUri = encodeURI(content);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "madres_schedule_report_"+dateCut(today)+".csv");
+    document.body.appendChild(link); // Required for FireFox
+    link.click()
+}
 </script>
-
-
-
 
 </body>
 </html>
