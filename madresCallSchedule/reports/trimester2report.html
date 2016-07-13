@@ -64,7 +64,7 @@ for (var i = 1; i < schedule.length; i++) {
             </tr>
         </thead>
     </table>
-    <script>
+    <script type="text/javascript">
     scenario1 = [schedule[0]];
     for (var i = 1; i < schedule.length; i++) {
         if (
@@ -122,7 +122,7 @@ for (var i = 1; i < schedule.length; i++) {
             </tr>
         </thead>
     </table>
-    <script>
+    <script type="text/javascript">
     scenario2 = [schedule[0]];
     for (var i = 1; i < schedule.length; i++) {
         if (schedule[i][header.indexOf("Withdraw")]=="" && schedule[i][header.indexOf("Tr2_Ques")]=="done") {
@@ -174,7 +174,7 @@ for (var i = 1; i < schedule.length; i++) {
             </tr>
         </thead>
     </table>
-    <script>
+    <script type="text/javascript">
     scenario3 = [schedule[0]];
     for (var i = 1; i < schedule.length; i++) {
         if (schedule[i][header.indexOf("Withdraw")]=="" && schedule[i][header.indexOf("Tr2_Ques")]=="incomplete" && schedule[i][header.indexOf("Tr2_inWindow")]==true) {
@@ -223,7 +223,7 @@ for (var i = 1; i < schedule.length; i++) {
             </tr>
         </thead>
     </table>
-    <script>
+    <script type="text/javascript">
     scenario4 = [schedule[0]];
     for (var i = 1; i < schedule.length; i++) {
         if (schedule[i][header.indexOf("Withdraw")]=="" && schedule[i][header.indexOf("Tr2_Ques")]=="incomplete" && schedule[i][header.indexOf("Tr2_inWindow")]==false) {
@@ -272,7 +272,7 @@ for (var i = 1; i < schedule.length; i++) {
             </tr>
         </thead>
     </table>
-    <script>
+    <script type="text/javascript">
     scenario5 = [schedule[0]];
     for (var i = 1; i < schedule.length; i++) {
         if (schedule[i][header.indexOf("Withdraw")]=="" && schedule[i][header.indexOf("Tr2_Ques")]=="neverStarted" && schedule[i][header.indexOf("Tr2_inWindow")]==false) {
@@ -322,7 +322,7 @@ for (var i = 1; i < schedule.length; i++) {
             </tr>
         </thead>
     </table>
-    <script>
+    <script type="text/javascript">
     scenario6 = [schedule[0]];
     for (var i = 1; i < schedule.length; i++) {if (schedule[i][header.indexOf("Withdraw")]!="") {scenario6.push(schedule[i])}}
     tr2_dropout_list = [];
@@ -356,12 +356,15 @@ for (var i = 1; i < schedule.length; i++) {
     </script>
 </div>
 
+<script type="text/javascript">
 console.log(scenario1);
 console.log(scenario2);
 console.log(scenario3);
 console.log(scenario4);
 console.log(scenario5);
 console.log(scenario6);
+</script>
+
 
 
 
