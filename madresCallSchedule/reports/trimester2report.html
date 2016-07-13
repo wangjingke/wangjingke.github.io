@@ -51,7 +51,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 <!--scenario 1, subjects in trimester call window and need to complete questions -->
 <div id="tr2_inWindow_needCall" style="display:none;">
-    <p>Subjects in trimester 2 call window and never started questionnaire (total = <span id="tr2_inWindow_needCall_num"></span>)</p>
+    <h3>Subjects in trimester 2 call window and never started questionnaire (total = <span id="tr2_inWindow_needCall_num"></span>)</h3>
     <p id="tr2_inWindow_needCall_list"></p>
     <table id="tr2_inWindow_needCall_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
         <thead>
@@ -110,7 +110,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 <!-- scenario 2, subjected completed trimester 2 questionnaire-->
 <div id="tr2_completed" style="display:none;">
-    <p>Subjects completed trimester 2 questionnaire (total = <span id="tr2_completed_num"></span>)</p>
+    <h3>Subjects completed trimester 2 questionnaire (total = <span id="tr2_completed_num"></span>)</h3>
     <p id="tr2_completed_list"></p>
     <table id="tr2_completed_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
         <thead>
@@ -146,7 +146,7 @@ for (var i = 1; i < schedule.length; i++) {
         $(document).ready(function(){
             $("#tr2_completed_table").DataTable({
                 paging: true,
-                data: tr2_inWindow_needCall_report, //remove the header
+                data: tr2_completed_report, //remove the header
                 "columns": [
                     {className: "dt-body-center" },
                     {className: "dt-body-center" },
@@ -160,6 +160,54 @@ for (var i = 1; i < schedule.length; i++) {
     </script>
 </div>
 
+<!-- scenario 3, subjects in trimester 2 window but with incompleted trimester 2 questionnaires -->
+<div id="tr2_inWindow_incomplete" style="display:none;">
+    <h3>Subjects in trimester 2 call window with incomplete trimester 2 questionnaires (total = <span id="tr2_inWindow_incomplete_num"></span>)</h3>
+    <p id="tr2_inWindow_incomplete_list"></p>
+    <table id="tr2_inWindow_incomplete_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Due Date</th>
+                <th>Gestational Age as of refDate</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+    scenario3 = [schedule[0]];
+    for (var i = 1; i < schedule.length; i++) {
+        if (schedule[i][header.indexOf("Withdraw")]=="" && schedule[i][header.indexOf("Tr2_Ques")]=="incomplete" && schedule[i][header.indexOf("Tr2_inWindow")]==true) {
+            scenario3.push(schedule[i]);
+        }
+    }
+    Tr2_inWindow_incomplete_list = [];
+    for (var i = 1; i < scenario3.length; i++) {Tr2_inWindow_incomplete_list.push(scenario3[i][header.indexOf("SubjectID")])}
+    document.getElementById("tr2_inWindow_incomplete_num").innerHTML = scenario3.length - 1;
+    document.getElementById("Tr2_inWindow_incomplete_list").innerHTML = Tr2_inWindow_incomplete_list;
+    tr2_inWindow_incomplete_report = [];
+    for (var i = 1; i < scenario3.length; i++) {
+        tr2_inWindow_incomplete_report.push([
+            scenario3[i][header.indexOf("SubjectID")],
+            scenario3[i][header.indexOf("DueDate")],
+            scenario3[i][header.indexOf("GestAge")]
+        ])
+    }
+    if (tr2_inWindow_incomplete_report.length > 0) {
+        $(document).ready(function(){
+            $("#tr2_completed_table").DataTable({
+                paging: true,
+                data: tr2_completed_report, //remove the header
+                "columns": [
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" }
+                ]
+            });
+        });
+        document.getElementById("tr2_inWindow_incomplete").style.display = "block";
+    }
+    </script>
+</div>
 
 
 </body>

@@ -142,14 +142,12 @@ function process() {
     // output schedule as cookie
     scheduleString = JSON.stringify(schedule); // convert array to JSON
     setCookie("schedule", scheduleString, 0.125); // cookie expires in 3hr
-
     // display options
     document.getElementById("stage_report").style.display = "block";
     report = [];
     for (i = 1; i < schedule.length; i++) { // skip header i ==0
         report.push(schedule[i].slice(0, 9));
     }
-
     $(document).ready(function(){
         $("#indivTrimester").DataTable({
             paging: true,
@@ -168,8 +166,6 @@ function process() {
         });
     });
 }
-
 </script>
-
 </body>
 </html>
