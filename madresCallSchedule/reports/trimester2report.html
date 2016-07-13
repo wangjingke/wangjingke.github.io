@@ -12,6 +12,7 @@
 
 <body>
 <h1>MADRES Trimester 2 report</h1>
+<p>Total number of participants is <span id="totalNum"></span></p>
 <p>The reference date (refDate) you selected is <span id="refDate"></span></p>
 <input type="button" id="download" value="Download Report" onclick=download() />
 
@@ -19,6 +20,7 @@
 refDay = getCookie("refDay");
 document.getElementById("refDate").innerHTML = refDay;
 schedule = JSON.parse(getCookie("schedule"));
+document.getElementById("totalNum").innerHTML = schedule.length - 1;
 // add new variable to the schedule
 schedule[0].push.apply(schedule[0], ["Tr2_inWindow", "Tr2_Ques", "GestAge"]);
 header = schedule[0];
@@ -377,7 +379,7 @@ function download() {
         tr2_outWindow_incomplete_list,
         [document.getElementById("tr2_outWindow_neverStarted_title").innerHTML+"; total = "+document.getElementById("tr2_outWindow_neverStarted_num").innerHTML],
         tr2_outWindow_neverStarted_list,
-        [document.getElementById("tr2_dropout_title").innerHTML+", total = "+document.getElementById("tr2_dropout_num").innerHTML],
+        [document.getElementById("tr2_dropout_title").innerHTML+"; total = "+document.getElementById("tr2_dropout_num").innerHTML],
         tr2_dropout_list
     ];
 
