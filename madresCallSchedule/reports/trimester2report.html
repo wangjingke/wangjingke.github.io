@@ -181,8 +181,8 @@ for (var i = 1; i < schedule.length; i++) {
             scenario3.push(schedule[i]);
         }
     }
-    Tr2_inWindow_incomplete_list = [];
-    for (var i = 1; i < scenario3.length; i++) {Tr2_inWindow_incomplete_list.push(scenario3[i][header.indexOf("SubjectID")])}
+    tr2_inWindow_incomplete_list = [];
+    for (var i = 1; i < scenario3.length; i++) {tr2_inWindow_incomplete_list.push(scenario3[i][header.indexOf("SubjectID")])}
     document.getElementById("tr2_inWindow_incomplete_num").innerHTML = scenario3.length - 1;
     document.getElementById("tr2_inWindow_incomplete_list").innerHTML = tr2_inWindow_incomplete_list;
     tr2_inWindow_incomplete_report = [];
@@ -195,7 +195,7 @@ for (var i = 1; i < schedule.length; i++) {
     }
     if (tr2_inWindow_incomplete_report.length > 0) {
         $(document).ready(function(){
-            $("#tr2_completed_table").DataTable({
+            $("#tr2_inWindow_incomplete_table").DataTable({
                 paging: true,
                 data: tr2_completed_report, //remove the header
                 "columns": [
@@ -211,6 +211,53 @@ for (var i = 1; i < schedule.length; i++) {
 </div>
 
 <!-- scenario 4, subjects missed all trimester 2 questionnaires, including drop-outs and out of window ones -->
+<div id="tr2_outWindow_incomplete" style="display:none;">
+    <h3>Subjects out of trimester 2 call window with incomplete trimester 2 questionnaires (total = <span id="tr2_outWindow_incomplete_num"></span>)</h3>
+    <p id="tr2_outWindow_incomplete_list"></p>
+    <table id="tr2_outWindow_incomplete_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='5'>
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Due Date</th>
+                <th>Gestational Age as of refDate</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+    scenario4 = [schedule[0]];
+    for (var i = 1; i < schedule.length; i++) {
+        if (schedule[i][header.indexOf("Withdraw")]=="" && schedule[i][header.indexOf("Tr2_Ques")]=="incomplete" && schedule[i][header.indexOf("Tr2_inWindow")]==false) {
+            scenario4.push(schedule[i]);
+        }
+    }
+    tr2_outWindow_incomplete_list = [];
+    for (var i = 1; i < scenario4.length; i++) {tr2_outWindow_incomplete_list.push(scenario4[i][header.indexOf("SubjectID")])}
+    document.getElementById("tr2_outWindow_incomplete_num").innerHTML = scenario4.length - 1;
+    document.getElementById("tr2_outWindow_incomplete_list").innerHTML = tr2_outWindow_incomplete_list;
+    tr2_outWindow_incomplete_report = [];
+    for (var i = 1; i < scenario4.length; i++) {
+        tr2_outWindow_incomplete_report.push([
+            scenario4[i][header.indexOf("SubjectID")],
+            scenario4[i][header.indexOf("DueDate")],
+            scenario4[i][header.indexOf("GestAge")]
+        ])
+    }
+    if (tr2_outWindow_incomplete_report.length > 0) {
+        $(document).ready(function(){
+            $("#tr2_outWindow_incomplete_table").DataTable({
+                paging: true,
+                data: tr2_completed_report, //remove the header
+                "columns": [
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" },
+                    {className: "dt-body-center" }
+                ]
+            });
+        });
+        document.getElementById("tr2_outWindow_incomplete").style.display = "block";
+    }
+    </script>
+</div>
 
 
 
