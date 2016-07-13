@@ -81,7 +81,13 @@ for (var i = 1; i < schedule.length; i++) {
     document.getElementById("tr2_inWindow_needCall_list").innerHTML = tr2_inWindow_needCall_list;
     tr2_inWindow_needCall_report = [];
     for(var i = 1; i < scenario1.length; i++) { //skip header
-        tr2_inWindow_needCall_report.push([scenario1[i][header.indexOf("SubjectID")], scenario1[i][header.indexOf("DueDate")], scenario1[i][header.indexOf("Tr2_Start")], scenario1[i][header.indexOf("Tr2_End")], scenario1[i][header.indexOf("GestAge")]]);
+        tr2_inWindow_needCall_report.push([
+            scenario1[i][header.indexOf("SubjectID")],
+            scenario1[i][header.indexOf("DueDate")],
+            scenario1[i][header.indexOf("Tr2_Start")],
+            scenario1[i][header.indexOf("Tr2_End")],
+            scenario1[i][header.indexOf("GestAge")]
+        ]);
     }
     if (tr2_inWindow_needCall_report.length > 0) {
         $(document).ready(function(){
@@ -132,7 +138,7 @@ for (var i = 1; i < schedule.length; i++) {
         tr2_completed_report.push([
             scenario2[i][header.indexOf("subjectID")],
             scenario2[i][header.indexOf("Due Date")],
-            dateCut(Math.max(countDay(scenario2[i][header.indexOf("Tr2_PSE")], 0).getTime(), countDay(scenario2[i][header.indexOf("Tr2_DadInfo")], 0).getTime())),
+            scenario2[i][header.indexOf("Tr2_DadInfo"),
             scenario2[i][header.indexOf("GestAge")]
         ])
     }
