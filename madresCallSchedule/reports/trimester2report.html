@@ -383,7 +383,7 @@ function download() {
     var encodedUri = encodeURI(content);
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "madres_schedule_report_"+dateCut(today)+".csv");
+    link.setAttribute("download", "madres_schedule_report_"+dateCut(new Date())+".csv");
     document.body.appendChild(link); // Required for FireFox
     link.click()
 }
