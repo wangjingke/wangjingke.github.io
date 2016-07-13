@@ -136,8 +136,8 @@ for (var i = 1; i < schedule.length; i++) {
     tr2_completed_report = [];
     for (var i = 1; i < scenario2.length; i++) {
         tr2_completed_report.push([
-            scenario2[i][header.indexOf("subjectID")],
-            scenario2[i][header.indexOf("Due Date")],
+            scenario2[i][header.indexOf("SubjectID")],
+            scenario2[i][header.indexOf("DueDate")],
             scenario2[i][header.indexOf("Tr2_DadInfo")],
             scenario2[i][header.indexOf("GestAge")]
         ])
@@ -162,8 +162,7 @@ for (var i = 1; i < schedule.length; i++) {
 
 
 <!-- scenario 3, subjects in trimester 2 window but with incompleted trimester 2 questionnaires -->
-<!--
-<div id="tr2_inWindow_incomplete" style="display:none;">
+<div id="tr2_inWindow_incomplete" style="display:block;">
     <h3>Subjects in trimester 2 call window with incomplete trimester 2 questionnaires (total = <span id="tr2_inWindow_incomplete_num"></span>)</h3>
     <p id="tr2_inWindow_incomplete_list"></p>
     <table id="tr2_inWindow_incomplete_table" class="display" data-order='[[ 0, "asc" ]]' data-page-length='25'>
@@ -210,7 +209,7 @@ for (var i = 1; i < schedule.length; i++) {
     }
     </script>
 </div>
--->
+
 
 </body>
 </html>
