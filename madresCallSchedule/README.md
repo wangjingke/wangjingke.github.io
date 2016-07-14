@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-<title>Notes and Instructions on MADRES Call Schedule</title>
-
-<xmp theme="readable" style="display:none;">
 ### RedCap
 
 Please log in your redCap account, go to "Data Exports, Reports, and Stats" under Applications on the left panel, and download the report named "DueDate Summary" as shown in the pictures below.</br>
@@ -12,9 +7,4 @@ Then choose the "CSV/Microsoft Excel (raw data)" as the format of the export (sh
 
 ***
 ### Due date and trimester window definition
-The expected due date of a participant was acquired from her questionnaires. The duration of a pregnancy is 40w0d. 
-
-</xmp>
-
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
-</html>
+The expected due date of a participant was acquired from her questionnaires. The duration of a pregnancy is 40w0d.
