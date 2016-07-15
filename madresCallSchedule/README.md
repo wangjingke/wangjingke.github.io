@@ -18,7 +18,8 @@ All the reports generated were effective to the chosen reference date. The gesta
 ***
 
 ### Trimester 2 report
-This report contains lists with essential information on participants falling in the following categories:
+This report contains lists with essential information on participants falling in the following categories:<br>
+
 1. Subjects in trimester call window and need to complete questionnaire
     * The gestational age of the subject is within her trimester 2 call window
     * No date in "Perceived Stress Evaluation" (PSE) form in mom_trimester_2 Event and no date in "Father's Information" (DadInfo) form under the same event
