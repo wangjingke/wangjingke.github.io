@@ -5,4 +5,4 @@ author: Wangjing Ke
 # baseurl: /blog
 url: http://wangjingke.com
 category_dir: /
-permalink: pretty
+permalink: /blog/:year/:month/:day/:title
