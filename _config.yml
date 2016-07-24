@@ -2,5 +2,5 @@ name: wangjing Ke Blog
 author: Wangjing Ke
 
 # site settings
-baseurl: /blog
+# baseurl: /blog
 url: http://wangjingke.com
