@@ -1,5 +1,6 @@
-name: wangjing Ke
+name: wangjing Ke Blog
+author: Wangjing Ke
 
 # site settings
-path: /blog
-url: "https://wangjingke.github.io/blog"
+baseurl: /blog
+url: "http://wangjingke.com"
