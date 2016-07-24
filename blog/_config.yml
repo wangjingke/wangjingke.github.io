@@ -1,5 +1,5 @@
 name: wangjing Ke
 
 # site settings
-baseurl: "/blog"
+path: /blog
 url: "https://wangjingke.github.io/blog"
