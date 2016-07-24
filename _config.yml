@@ -1,6 +1,8 @@
-name: wangjing Ke Blog
+name: Jing's Blog
 author: Wangjing Ke
 
 # site settings
 # baseurl: /blog
 url: http://wangjingke.com
+category_dir: /
+permalink: pretty
