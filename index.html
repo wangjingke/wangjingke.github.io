@@ -6,7 +6,7 @@ title: Hi, there!
     <div class="row">
         <div class="col-lg-12">
             <h3>{{page.title}}</h3>
-            <p>This is my personal webpage hosted on GitHub Pages, using Bootstrap and Jekyll. I plan to add some words here about my work, and all the cool stuff I've learned. For people from the dear MADRES study, please click the tab "MADRES" on the right top corner to access the subject tracking reports, and the trimester window calculation.</p>
+            <p>This is my personal webpage hosted on GitHub Pages, using Bootstrap and Jekyll. I plan to add some words here about my work, and all the cool stuff I've learned. For people from the dear MADRES study, please click the tab "MADRES" on the right top corner to access the subject tracking reports, and the trimester window calculation. If you need to decrypt data from the madresGPS app, please click the corresponding link on the title bar.</p>
             <ur class="posts">
                 {% for post in site.posts %}
                 	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
