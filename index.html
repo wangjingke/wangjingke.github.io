@@ -1,60 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Greetings from Wangjing Ke</title>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- redirect to the custom domain for google to index-->
-    <link rel="canonical" href="http://www.wangjingke.com" />
-</head>
-
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="#" class="navbar-brand">Wangjing Ke</a>
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-main">
-                <ul class="nav navbar-nav">
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="http://wangjingke.com/blog">Blog</a></li>
-                    <li><a href="https://wangjingke.github.io/madresSubjectTracking/index.html">MADRES</a></li>
-                    <li><a href="https://wangjingke.github.io/madresGpsDecryption/index.html">madresGPS</a></li>
-                    <li><a href="#" target="_blank">Contact</a></li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="page-header">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3>Hi, there!</h3>
-                    <p>This is my personal webpage hosted on GitHub Pages, using Bootstrap. I plan to add some words here about my work, and all the cool stuff I've learned. For people from the dear MADRES study, please click the tab "MADRES" on the right top corner to access the subject tracking reports, and the trimester window calculation.</p>
-                </div>
-            </div>
+---
+layout: default
+title: Jing's Blog
+---
+<div class="page-header">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>{{page.title}}</h3>
+            <p>This is my personal webpage hosted on GitHub Pages, using Bootstrap and Jekyll. I plan to add some words here about my work, and all the cool stuff I've learned. For people from the dear MADRES study, please click the tab "MADRES" on the right top corner to access the subject tracking reports, and the trimester window calculation.</p>
+            <ur class="posts">
+                {% for post in site.posts %}
+                	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+                	  {% endfor %}
+            </ur>
         </div>
     </div>
-</body>
-
-
-</html>
+</div>
