@@ -26,17 +26,23 @@ Chris Paul attempted 1109 shots in the 2014-2015 season, made 541 and missed 569
 
 Figure 1 Shotchart of Chris Paul Field Goal Attempts During 2014-2015 Regular Season
 
+<div align="center">
 <img src="{{site.url}}/assets/images/spatialAnalysis/figure1.png" style="width: 50%; height: 50%" align="middle"/>​
+</div>
 
 Figure 1 shown above is the shot chart summarizing all the shots attempted by Chris Paul last year. The green dots were shots made and red shows the ones missed. We can see that there were more attempted shots on the right side of the court. The shots were clustered under the hoop, and at the left corner. There was a clear gap between the three pointers and the mid-range shots.
 
+<div align="center">
 <img src="{{site.url}}/assets/images/spatialAnalysis/figure2.png" style="width: 50%; height: 50%" align="middle"/>​
 <img src="{{site.url}}/assets/images/spatialAnalysis/figure3.png" style="width: 50%; height: 50%" align="middle"/>​
+</div>
 
 The K function was constructed and plotted above without differentiating the made and missed shots. The distance is in 1/10 ft per unit as the width of a standard NBA court is 50 ft. The K function curve lies well above the range defined by the upper- and lower-envelope function, indicating a strong deviation from the complete spatial randomness. This is confirmed by the adjusted K functions shown above since the adjusted K curves are far from the K curve under theoretical Poisson distribution.
 
+<div align="center">
 <img src="{{site.url}}/assets/images/spatialAnalysis/figure4.png" style="width: 50%; height: 50%" align="middle"/>​
 <img src="{{site.url}}/assets/images/spatialAnalysis/figure5.png" style="width: 50%; height: 50%" align="middle"/>​
+</div>
 
 In order to compare the spatial distribution between made and missed shots, the difference between their K functions were (D) plotted above. The red line is the observed D, while the upper and lower theoretical bound were presented in dotted lines. Since the red line is within the envelope formed by the upper and lower bound, we conclude that the spatial distributions of made and missed shots are not significantly different. In other words, there were no areas on the court where Chris Paul shot better or worse than the rest. We can also perform similar analysis stratified by shooting zone, such as beyond 3 point arc, mid-range, in the paint, and within the restricted area, and the plots for stratified regions are shown on the last page. Those plots confirm that there are no regions where Chris Paul shot particularly better or worse since the red line is always within the envelope created by the upper and lower boundaries.
 
