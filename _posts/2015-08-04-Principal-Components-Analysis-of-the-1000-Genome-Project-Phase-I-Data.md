@@ -20,8 +20,9 @@ The 1KGP phase 1 genetic data on 1092 individuals were downloaded from the proje
 ### Results
 The table below summarizes the population in the phase 1 of the 1000 genome project by their race and ethnicity.
 
+
 |Race|Ethnicity|Description|Size|
-|---|---|---|---|
+|:---------:|:---------:|:---------:|:---:|
 |AFR|ASW|Americans of African Ancestry in SW USA|61|
 |AFR|LWK|Luhya in Webuye, Kenya|97|
 |AFR|YRI|Yoruba in Ibadan, Nigeria|88|
@@ -37,9 +38,14 @@ The table below summarizes the population in the phase 1 of the 1000 genome proj
 |EUR|IBS|Iberian Population in Spain|14|
 |EUR|TSI|Toscani in Italia|98|
 
+
 <div align="center">
-<img src="{{site.url}}/assets/images/1kg/PC1vsPC2.png" style="width: 50%; height: 50%" />​
-<img src="{{site.url}}/assets/images/1kg/PC9vsPC10.png" style="width: 50%; height: 50%" />​
+    <div>
+    <img src="{{site.url}}/assets/images/1kg/PC1vsPC2.png" style="width: 50%; height: 50%" />​
+    </div>
+    <div>
+    <img src="{{site.url}}/assets/images/1kg/PC9vsPC10.png" style="width: 50%; height: 50%" />​
+    </div>
 </div>
 
 The left plot above (Figure 1, left) depicts the first vs. second principal components (PC1 vs. PC2), stratified by race. We can see that the four groups, Caucasians (EUR, blue), Asians (ASN, red), Latinos (AMR, green), and Africans (AFR, black) were well separated. The Asians are especially tightly congregated compared to the other three groups. Latinos spread amid the Asians, Caucasians, and Africans, suggesting a similarity to all three groups. There is a tail of Africans pointing towards the Caucasians, which could be the admixture population between the two groups. The right plot above (Figure 1, right) shows PC9 vs. PC10, stratified by race. The points are evenly scattered on the plot, indicating that there is hardly any segregation by race or systematic ancestry differences. We can also portray the four races on a 3-dimentional scale as shown in the plot below (Figure 2).
