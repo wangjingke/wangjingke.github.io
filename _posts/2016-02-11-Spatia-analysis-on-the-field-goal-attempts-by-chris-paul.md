@@ -34,7 +34,7 @@ Figure 1 shown above is the shot chart summarizing all the shots attempted by Ch
 
 <div align="center">
 <img src="{{site.url}}/assets/images/spatialAnalysis/figure2.png" style="width: 50%; height: 50%" align="middle"/>​
-<img src="{{site.url}}/assets/images/spatialAnalysis/figure3.png" style="width: 50%; height: 50%" align="middle"/>​
+<img src="{{site.url}}/assets/images/spatialAnalysis/figure3.png" style="width: 80%; height: 80%" align="middle"/>​
 </div>
 
 The K function was constructed and plotted above without differentiating the made and missed shots. The distance is in 1/10 ft per unit as the width of a standard NBA court is 50 ft. The K function curve lies well above the range defined by the upper- and lower-envelope function, indicating a strong deviation from the complete spatial randomness. This is confirmed by the adjusted K functions shown above since the adjusted K curves are far from the K curve under theoretical Poisson distribution.
