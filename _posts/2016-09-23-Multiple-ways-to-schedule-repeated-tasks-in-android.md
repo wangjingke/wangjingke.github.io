@@ -220,9 +220,10 @@ public class GpsTrackerAlarmRecorder extends IntentService {
 The idea is to initiate the first alarm in the service, and each alarm will schedule the next alarm when receiving the intent. An alarm will start a `startWakefulService()` that starts the `IntentService` and keep the phone awake until the `Handler` completes its job. Theoretically it should work, but here is what I get when the app is running on an emulator on Android studio.
 
 >I/trigger: scheduleAlarm @ 358017
->I/trigger: receiveAlarm @ 368010
->I/trigger: scheduleAlarm @ 368066
+>I/trigger: receiveAlarm @ 368010 <br>
+>I/trigger: scheduleAlarm @ 368066 </br>
 >I/recorder: executeAlarm @ 368105
+>
 >I/trigger: receiveAlarm @ 378007
 >I/trigger: scheduleAlarm @ 378020
 >I/trigger: receiveAlarm @ 388003
