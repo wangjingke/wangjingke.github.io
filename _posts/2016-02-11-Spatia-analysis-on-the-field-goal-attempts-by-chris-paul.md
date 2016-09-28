@@ -25,7 +25,7 @@ Results and Discussion
 Chris Paul attempted 1109 shots in the 2014-2015 season, made 541 and missed 569. Of the 1109 shots, 782 were two pointers, including 483 mid-ranges, and the rest 327 were three pointers.
 
 Figure 1 Shotchart of Chris Paul Field Goal Attempts During 2014-2015 Regular Season
-![figure 1]({{site.url}}/assets/images/spatialAnalysis/figure1.png)
+<img src="{{site.url}}/assets/images/spatialAnalysis/figure1.png" style="width: 50%; height: 50%"/>​
 
 Figure 1 shown above is the shot chart summarizing all the shots attempted by Chris Paul last year. The green dots were shots made and red shows the ones missed. We can see that there were more attempted shots on the right side of the court. The shots were clustered under the hoop, and at the left corner. There was a clear gap between the three pointers and the mid-range shots.
 
