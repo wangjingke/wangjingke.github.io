@@ -39,11 +39,11 @@ The table below summarizes the population in the phase 1 of the 1000 genome proj
 |EUR|TSI|Toscani in Italia|98|
 
 
-<div align="center">
-    <div>
+<div align="center" style="display: inline-block">
+    <div style="display: inline-block">
     <img src="{{site.url}}/assets/images/1kg/PC1vsPC2.png" style="width: 50%; height: 50%" />​
     </div>
-    <div>
+    <div style="display: inline-block">
     <img src="{{site.url}}/assets/images/1kg/PC9vsPC10.png" style="width: 50%; height: 50%" />​
     </div>
 </div>
