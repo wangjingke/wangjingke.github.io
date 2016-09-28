@@ -25,12 +25,18 @@ Results and Discussion
 Chris Paul attempted 1109 shots in the 2014-2015 season, made 541 and missed 569. Of the 1109 shots, 782 were two pointers, including 483 mid-ranges, and the rest 327 were three pointers.
 
 Figure 1 Shotchart of Chris Paul Field Goal Attempts During 2014-2015 Regular Season
+
 <img src="{{site.url}}/assets/images/spatialAnalysis/figure1.png" style="width: 50%; height: 50%"/>​
 
 Figure 1 shown above is the shot chart summarizing all the shots attempted by Chris Paul last year. The green dots were shots made and red shows the ones missed. We can see that there were more attempted shots on the right side of the court. The shots were clustered under the hoop, and at the left corner. There was a clear gap between the three pointers and the mid-range shots.
 
+![Figure 2]({{site.url}}/assets/images/spatialAnalysis/figure2.png)
+![Figure 3]({{site.url}}/assets/images/spatialAnalysis/figure3.png)
 
 The K function was constructed and plotted above without differentiating the made and missed shots. The distance is in 1/10 ft per unit as the width of a standard NBA court is 50 ft. The K function curve lies well above the range defined by the upper- and lower-envelope function, indicating a strong deviation from the complete spatial randomness. This is confirmed by the adjusted K functions shown above since the adjusted K curves are far from the K curve under theoretical Poisson distribution.
+
+![Figure 4]({{site.url}}/assets/images/spatialAnalysis/figure4.png)
+![Figure 5]({{site.url}}/assets/images/spatialAnalysis/figure5.png)
 
 
 In order to compare the spatial distribution between made and missed shots, the difference between their K functions were (D) plotted above. The red line is the observed D, while the upper and lower theoretical bound were presented in dotted lines. Since the red line is within the envelope formed by the upper and lower bound, we conclude that the spatial distributions of made and missed shots are not significantly different. In other words, there were no areas on the court where Chris Paul shot better or worse than the rest. We can also perform similar analysis stratified by shooting zone, such as beyond 3 point arc, mid-range, in the paint, and within the restricted area, and the plots for stratified regions are shown on the last page. Those plots confirm that there are no regions where Chris Paul shot particularly better or worse since the red line is always within the envelope created by the upper and lower boundaries.
@@ -38,6 +44,8 @@ In order to compare the spatial distribution between made and missed shots, the 
 Conclusions
 
 It is clear from the shot chart and the K function plot of all shot attempts that Chris Paul had a certain preference on where he would make shots. There were, however, no significant difference on the field goal success rate over various regions on the court. The field goal percentage for a decent NBA player is around 40%, which gives a made vs. missed ratio about 2:3. This ratio may not be large enough to detect for the proposed method. In order to determine when a difference in made and missed shots can be found, simulated tests were conducted. Given the same position and number of shots made by Chris Paul, simulated made/missed status was assigned to each attempt based on a predefined probability. We can see from the plots shown below that only when the field goal percentage is over 99%, can current method detect a significant difference. Some NBA players at center or power forward position would only attempt shots at very close range by dunking. They may have the highest field goal percentage, which is around 75%, but still not high enough to be considered significantly different between made and missed. Besides, these players of high field goal percentage tend to make their attempts under the basket, so all the shots are overlapped or tightly clustered, leaving no points for conducting the analysis.
+
+![Figure 6]({{site.url}}/assets/images/spatialAnalysis/figure6.png)
 
 It is therefore reasonable to say that the method proposed by Ramis et al for the analysis of cancer case distributions, regardless the close analogy between their examples and our situation, may not be applicable to our basketball shooting data. This is due to the fact that the field goal percentage of an average basketball player is usually close to 50%. We may have to try other methods to compare the spatial distributions in made and missed shots. Another possible approach is to treat the shooting as geostatistical data, and each point has a value of either 0 (missed) or 1 (made). We can build prediction models using krigging to estimate the propensity of making shots at a given location on the courts. There are several concerns using the methods. For example, there is a reference point on the court, which is the basket. According to the basketball common sense, the closer to the basket, the easier the shot is. This heterogeneity may not be well represented in the statistical model. This approach remains unexplored, awaiting for future pursuit.
 
