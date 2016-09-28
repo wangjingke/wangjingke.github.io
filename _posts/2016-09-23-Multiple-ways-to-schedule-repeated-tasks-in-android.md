@@ -32,7 +32,9 @@ The first is so-called time drift. When the screen is on, and the phone is fully
 A few tricks can be used to slow down the drift. The first is to put the `handler.postDelayed()` at the beginning of `run()` statement so that regardless how long the actual program takes, the next event can be scheduled as soon as possible. This, however, does not cover the time it takes to initiate the instance, so the drift problem still exists; and the second trick is to introduce a dynamic interval. Rather than using exact 10s, it can be `10*1000-SystemClock.elapsedRealtime()%1000` so that the next event is always scheduled to be at the beginning of the 10th second, assuming the initiation takes less than a second.
 
 The next thing that causes delay is the phone going to sleep mode. An android phone allegedly (due to a lack of proper documentation) would quickly go to sleep after the screen is off and nothing occupies the CPU. The [official reference](https://developer.android.com/reference/android/os/Handler.html) mentions that the delay time is in `delayMillis`, which means the task
+
 > to be run after the specified amount of time elapses.
+
 This misleading message may give people a false hope that the `delayMillis` corresponds to real time elapse in real world, but as explained [here](http://binarybuffer.com/2012/07/executing-scheduled-periodic-tasks-in-android) by its the source code, the `Handler.postDelayed()` method does not account for phone's deep sleep time, nor does the `Handler.postAtTime()` method since they both rely on the [`uptimeMillis`](https://developer.android.com/reference/android/os/SystemClock.html). Basically, the take home message for `Handler` is that it guarantees delay for at least the specified time period, but the exact time of delay depends on the phone's mood.
 
 I have then tried a few ways to get constant intervals.
