@@ -6,11 +6,11 @@ date: 2016-02-11
 
 I took a spatial analysis class last semester, and learned some pretty interesting things. As an all-time basketball fan, I decided to do some spatial analysis on Chris Paul's jump shoot as my final project for that class. Here is a summary of the report. The only reason I chose Chris Paul is because he is my wife's favorite player.
 
-##### Introduction
+### Introduction
 
 The purpose of this project is to apply spatial analysis methods and procedures to the shooting data of a chosen basketball player. Chris Paul is the leading point guard in the NBA league today. He is famous for his sharp view on open opportunities on the court and deadly stable mid-range shooting (jumpshots taken in between the 3 point line and the painted area) over defense. I would like to answer two questions: first, does Chris Paul has a preference on where to make a shot; and second, is there a place on the court where Chris Paul is “unstoppable”.
 
-##### Methods
+### Methods
 
 The shooting log of Chris Paul from the 2014-2015 NBA season was scraped and downloaded from the http://stats.nba.com/ website with the help from [this post](http://www.gregreda.com/2015/02/15/web-scraping-finding-the-api/). It contained detailed information regarding every shot the player made or missed at each game, such as the coordinates of the shot, the closest defender, the result of the shot (made/missed). Using the hoop as the reference point, the Y coordinate was the distance to the baseline, and X=0 was the line perpendicular to the baseline, crossing the hoop. Y can be negative since the hoop was within the court parameters, and a shot could be made behind the basket. The value of X coordinate was therefore the distance to the line X=0. Facing the basket, X was negative when the shoot was on the left side of the court, and it was positive when the shot was on the right side. Free throws were not included in the analysis, so only field goals were accounted for. Two pointers (a shot worth 2 points when made) could be distinguished from three pointers by their distance to the hoop, and coordinates of the shots.
 
@@ -20,7 +20,7 @@ One question that is of particular interest is whether the player had a higher p
 
 A simulation was performed in the end to see what the goal percentage (number of shots made/total number of shots) should be when a significant difference can be detected. Given the same amount of shots and identical location, each shot was randomly assigned as made or missed following a predefined probability distribution. The K functions from simulated made and missed shots were compared and plotted.
 
-## Results and Discussion
+### Results and Discussion
 
 Chris Paul attempted 1109 shots in the 2014-2015 season, made 541 and missed 569. Of the 1109 shots, 782 were two pointers, including 483 mid-ranges, and the rest 327 were three pointers.
 
@@ -56,7 +56,7 @@ It is clear from the shot chart and the K function plot of all shot attempts tha
 
 It is therefore reasonable to say that the method proposed by Ramis et al for the analysis of cancer case distributions, regardless the close analogy between their examples and our situation, may not be applicable to our basketball shooting data. This is due to the fact that the field goal percentage of an average basketball player is usually close to 50%. We may have to try other methods to compare the spatial distributions in made and missed shots. Another possible approach is to treat the shooting as geostatistical data, and each point has a value of either 0 (missed) or 1 (made). We can build prediction models using krigging to estimate the propensity of making shots at a given location on the courts. There are several concerns using the methods. For example, there is a reference point on the court, which is the basket. According to the basketball common sense, the closer to the basket, the easier the shot is. This heterogeneity may not be well represented in the statistical model. This approach remains unexplored, awaiting for future pursuit.
 
-#### References
+### References
 
 Ramis R, Gómez-Barroso D, Tamayo I, García-Pérez J, Morales A, et al. (2015) Spatial Analysis of Childhood Cancer: A Case/Control Study. PLoS ONE10(5): e0127273. <br>
 Rowlingson BS, Diggle PJ. Splancs: spatial point pattern analysis code in S-Plus. Comput Geosci. 1993; 19: 627–655.
