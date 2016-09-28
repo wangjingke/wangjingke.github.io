@@ -41,10 +41,10 @@ The table below summarizes the population in the phase 1 of the 1000 genome proj
 
 <div align="center" style="display: inline-block">
     <div style="max-width: 400px; height: auto; display: inline-block">
-    <img src="{{site.url}}/assets/images/1kg/PC1vsPC2.png" />​
+    <img src="{{site.url}}/assets/images/1kg/PC1vsPC2.png" style="width: 80%; height: 80%" />​
     </div>
     <div style="max-width: 400px; height: auto; display: inline-block">
-    <img src="{{site.url}}/assets/images/1kg/PC9vsPC10.png" />​
+    <img src="{{site.url}}/assets/images/1kg/PC9vsPC10.png" style="width: 80%; height: 80%" />​
     </div>
 </div>
 
