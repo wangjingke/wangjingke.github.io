@@ -38,6 +38,7 @@ The table below summarizes the population in the phase 1 of the 1000 genome proj
 |EUR|IBS|Iberian Population in Spain|14|
 |EUR|TSI|Toscani in Italia|98|
 
+<p></p>
 
 <div align="center" style="display: inline-block">
     <div style="max-width: 400px; height: auto; display: inline-block">
