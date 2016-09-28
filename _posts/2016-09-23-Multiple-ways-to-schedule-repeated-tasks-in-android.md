@@ -4,7 +4,7 @@ title: "Multiple ways to schedule repeated tasks in android"
 date: 2016-09-23
 ---
 
-In the past a couple weeks, I have been developing a location tracking app for the USC MADRES study. We need a customized app for our study because first, the location data from participants are considered sensible information by the IRB, and have to be encrypted; second, we want to separate signals from the GPS and from the network for good research reasons. Details about the app can be found [here]().
+In the past a couple weeks, I have been developing a location tracking app for the USC MADRES study. We need a customized app for our study because first, the location data from participants are considered sensible information by the IRB, and have to be encrypted; second, we want to separate signals from the GPS and from the network for good research reasons. Details about the app can be found [here](https://github.com/wangjingke/madresGpsClient/blob/master/README.md).
 
 It turns out that the key to the app is to find a way to perform a task (such as recording the location) on the phone periodically and consistently. Here I want to summarize all sorts of the methods I tried in order to achieve this goal, and my tears and joys during the process.
 
@@ -279,3 +279,5 @@ public class GpsTrackerAlarmTrigger extends BroadcastReceiver {
 ```
 
 Overall, the results from this approach are kind of acceptable. There is still variation in the intervals, but it is usually within seconds; the battery consumption is reasonable and it can be further reduced with longer intervals. A couple things worth noting about this method. The `BroadcastReceiver` would have to be static if I want to include it in the `Service` as an inner class, but it would not be able to access variables created in the outer class, so it has to be separate from the `Service`. Then, I have to make a variable from the `Service` as static so that the `BroadcastReceiver` can access it, but this is a bad programming practice.
+
+In terms of the new doze mode introduced since Android 6.0, the best option is to put the app in the whitelist for battery optimization exemption. There is a `setAndAllowWhileidle()` method under `AlarmManager`, but android will not dispatch these alarms more than about every minute or every 15 minutes in low-power idle mode, so it is not a suitable choice for an app like mine that needs constant wake up as often as every 5-10 seconds.
