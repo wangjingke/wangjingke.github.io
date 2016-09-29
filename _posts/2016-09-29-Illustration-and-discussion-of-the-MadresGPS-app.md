@@ -21,11 +21,11 @@ The location accuracy of the phone needs to be set as high, and the WiFi should 
     <img src="{{site.url}}/assets/images/madresGPS/accuracy.png" style="width: 100%; height: 100%" />​
     </div>
 </div>
-
+<p></p>
 For phones with system before android 6.0, the app will ask for permissions at the beginning of the installment. For phones with android 6.0 and above, the app will prompt and ask for permissions at the first time the app launches. You can make sure the app has all the permissions it needs by going to the system settings and check the app permissions.
 
 If you have android 6.0 and above, you may want to add the app to the whitelist by selecting not optimized for battery under the battery option in system settings so that the tracking will continue to work after the phone enters the doze mode. Otherwise, the app will only record a few times every hour depending on the doze stage of the phone.
-
+<p></p>
 <div align="center">
     <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/battery.png" style="width: 100%; height: 100%" />​
