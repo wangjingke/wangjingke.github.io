@@ -113,7 +113,6 @@ Before decryption, the raw data looks like this,
 Here are the same lines from above decrypted as an example. The output is usually in a comma delimited csv file.
 
 <small>
-
 > "MAD092301","2016-09-23 16:41:22","Location[gps 34.066153,-118.197157 acc=4 et=+2m30s192ms alt=93.0 vel=1.25 bear=15.9 ]","1474674082000","16","20" <br>
 > "MAD092301","2016-09-23 16:41:22","Location[network 34.066201,-118.197012 acc=50 et=+2m22s794ms ]","1474674074675","WiFi++","Network++" <br>
 > "MAD092301","2016-09-23 16:41:32","Location[gps 34.066259,-118.197100 acc=3 et=+2m39s192ms alt=92.0 vel=1.25 bear=18.7 ]","1474674091000","16","20" <br>
