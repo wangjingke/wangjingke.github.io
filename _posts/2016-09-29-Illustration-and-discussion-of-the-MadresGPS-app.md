@@ -13,10 +13,11 @@ The app can be found and installed from the Google Play Store under the name "ma
 The location accuracy of the phone needs to be set as high, and the WiFi should be turned on.
 
 <div align="center" style="display: inline-block">
-    <div style="max-width: 400px; height: auto; display: inline-block">
+    <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/location.png" />​
     </div>
-    <div style="max-width: 400px; height: auto; display: inline-block">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/accuracy.png" />​
     </div>
 </div>
@@ -38,7 +39,7 @@ If you have android 6.0 and above, you may want to add the app to the whitelist 
 The interface of the app is deliberately kept simple so that the participants have less interests to play with the app, and although unlikely, accidentally change the settings or terminate the tracking prematurely.
 
 <div align="center">
-<img src="{{site.url}}/assets/images/madresGPS/interface.png" style="width: 50%; height: 50%" />
+<img src="{{site.url}}/assets/images/madresGPS/interface.png" style="width: 25%; height: 25%" />
 </div>
 
 ### Start tracking
@@ -61,12 +62,15 @@ After type in the command, choose the mode and interval, press "Confirm" to star
     <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/startmadres.png" style="width: 100%; height: 100%" />​
     </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/start.png" style="width: 100%; height: 100%" />​
     </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/notification1.png" style="width: 100%; height: 100%" />​
     </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/notification2.png" style="width: 100%; height: 100%" />​
     </div>
