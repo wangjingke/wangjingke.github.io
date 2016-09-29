@@ -113,16 +113,16 @@ Before decryption, the raw data looks like this,
 Here are the same lines from above decrypted as an example. The output is usually in a comma delimited csv file.
 
 <small>
->"MAD092301","2016-09-23 16:41:22","Location[gps 34.066153,-118.197157 acc=4 et=+2m30s192ms alt=93.0 vel=1.25 bear=15.9 ]","1474674082000","16","20" <br>
->"MAD092301","2016-09-23 16:41:22","Location[network 34.066201,-118.197012 acc=50 et=+2m22s794ms ]","1474674074675","WiFi++","Network++" <br>
->"MAD092301","2016-09-23 16:41:32","Location[gps 34.066259,-118.197100 acc=3 et=+2m39s192ms alt=92.0 vel=1.25 bear=18.7 ]","1474674091000","16","20" <br>
->"MAD092301","2016-09-23 16:41:32","Location[network 34.066201,-118.197012 acc=50 et=+2m22s794ms ]","1474674074675","WiFi++","Network++" <br>
->"MAD092301","2016-09-23 16:41:42","Location[gps 34.066377,-118.197065 acc=3 et=+2m48s192ms alt=93.0 vel=1.25 bear=25.0 ]","1474674100000","16","20" <br>
->"MAD092301","2016-09-23 16:41:42","Location[network 34.066287,-118.197149 acc=50 et=+2m42s858ms ]","1474674094739","WiFi++","Network++" <br>
->"MAD092301","2016-09-23 16:41:52","Location[gps 34.066512,-118.197000 acc=3 et=+3m0s192ms alt=92.0 vel=1.25 bear=25.0 ]","1474674112000","12","12" <br>
->"MAD092301","2016-09-23 16:41:52","Location[network 34.066287,-118.197149 acc=50 et=+2m42s858ms ]","1474674094739","WiFi++","Network++" <br>
->"MAD092301","2016-09-23 16:42:02","Location[gps 34.066607,-118.196967 acc=3 et=+3m9s192ms alt=90.0 vel=1.0 bear=28.5 ]","1474674121000","16","20" <br>
->"MAD092301","2016-09-23 16:42:02","Location[network 34.066230,-118.197057 acc=50 et=+3m2s860ms ]","1474674114741","WiFi++","Network++" <br>
+> "MAD092301","2016-09-23 16:41:22","Location[gps 34.066153,-118.197157 acc=4 et=+2m30s192ms alt=93.0 vel=1.25 bear=15.9 ]","1474674082000","16","20" <br>
+> "MAD092301","2016-09-23 16:41:22","Location[network 34.066201,-118.197012 acc=50 et=+2m22s794ms ]","1474674074675","WiFi++","Network++" <br>
+> "MAD092301","2016-09-23 16:41:32","Location[gps 34.066259,-118.197100 acc=3 et=+2m39s192ms alt=92.0 vel=1.25 bear=18.7 ]","1474674091000","16","20" <br>
+> "MAD092301","2016-09-23 16:41:32","Location[network 34.066201,-118.197012 acc=50 et=+2m22s794ms ]","1474674074675","WiFi++","Network++" <br>
+> "MAD092301","2016-09-23 16:41:42","Location[gps 34.066377,-118.197065 acc=3 et=+2m48s192ms alt=93.0 vel=1.25 bear=25.0 ]","1474674100000","16","20" <br>
+> "MAD092301","2016-09-23 16:41:42","Location[network 34.066287,-118.197149 acc=50 et=+2m42s858ms ]","1474674094739","WiFi++","Network++" <br>
+> "MAD092301","2016-09-23 16:41:52","Location[gps 34.066512,-118.197000 acc=3 et=+3m0s192ms alt=92.0 vel=1.25 bear=25.0 ]","1474674112000","12","12" <br>
+> "MAD092301","2016-09-23 16:41:52","Location[network 34.066287,-118.197149 acc=50 et=+2m42s858ms ]","1474674094739","WiFi++","Network++" <br>
+> "MAD092301","2016-09-23 16:42:02","Location[gps 34.066607,-118.196967 acc=3 et=+3m9s192ms alt=90.0 vel=1.0 bear=28.5 ]","1474674121000","16","20" <br>
+> "MAD092301","2016-09-23 16:42:02","Location[network 34.066230,-118.197057 acc=50 et=+3m2s860ms ]","1474674114741","WiFi++","Network++" <br>
 </small>
 
 Each line is one entry of location information. The first item is the subject ID in "MAD####" format. The second item is the timestamp when the entry is written to the output file in yyyy-MM-dd HH:mm:ss format. This timestamp is the clock time from the phone. Therefore, in case of daylight saving time or manual time change, we will see a rollback or jump in the timestamp.
