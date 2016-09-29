@@ -26,10 +26,10 @@ For phones with system before android 6.0, the app will ask for permissions at t
 If you have android 6.0 and above, you may want to add the app to the whitelist by selecting not optimized for battery under the battery option in system settings so that the tracking will continue to work after the phone enters the doze mode. Otherwise, the app will only record a few times every hour depending on the doze stage of the phone.
 
 <div align="center" style="display: inline-block">
-    <div style="max-width: 400px; height: auto; display: inline-block">
+    <div style="max-width: 200px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/battery.png" style="width: 50%; height: 50%" />​
     </div>
-    <div style="max-width: 400px; height: auto; display: inline-block">
+    <div style="max-width: 200px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/whitelist.png" style="width: 50%; height: 50%" />​
     </div>
 </div>
@@ -38,7 +38,7 @@ If you have android 6.0 and above, you may want to add the app to the whitelist 
 The interface of the app is deliberately kept simple so that the participants have less interests to play with the app, and although unlikely, accidentally change the settings or terminate the tracking prematurely.
 
 <div align="center">
-<img src="{{site.url}}/assets/images/madresGPS/interface.png" />
+<img src="{{site.url}}/assets/images/madresGPS/interface.png" style="width: 50%; height: 50%" />
 </div>
 
 ### Start tracking
@@ -58,16 +58,16 @@ The recording interval is preset to once every ten seconds, but it can be change
 After type in the command, choose the mode and interval, press "Confirm" to start the tracking. There will be texts showing on the screen stating the participant ID and the study has started. A notification will also show up in the phone indicating the ID and interval.
 
 <div align="center" style="display: inline-block">
-    <div style="max-width: 400px; height: auto; display: inline-block">
+    <div style="max-width: 200px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/startmadres.png" style="width: 50%; height: 50%" />​
     </div>
-    <div style="max-width: 400px; height: auto; display: inline-block">
+    <div style="max-width: 200px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/start.png" style="width: 50%; height: 50%" />​
     </div>
-    <div style="max-width: 400px; height: auto; display: inline-block">
+    <div style="max-width: 200px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/notification1.png" style="width: 50%; height: 50%" />​
     </div>
-    <div style="max-width: 400px; height: auto; display: inline-block">
+    <div style="max-width: 200px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/notification2.png" style="width: 50%; height: 50%" />​
     </div>
 </div>
@@ -76,7 +76,7 @@ After type in the command, choose the mode and interval, press "Confirm" to star
 Type in "stopmadres" on the command line and press "Confirm" to stop the tracking, wait for a few seconds before turn off the app or anything else to give the app sometime to rename the files and shut down the services.
 
 <div align="center">
-<img src="{{site.url}}/assets/images/madresGPS/stopmadres.png" />
+<img src="{{site.url}}/assets/images/madresGPS/stopmadres.png" style="width: 50%; height: 50%" />
 </div>
 
 ### Clean data
