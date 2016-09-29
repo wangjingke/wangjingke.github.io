@@ -81,7 +81,7 @@ After type in the command, choose the mode and interval, press "Confirm" to star
 Type in "stopmadres" on the command line and press "Confirm" to stop the tracking, wait for a few seconds before turn off the app or anything else to give the app sometime to rename the files and shut down the services.
 
 <div align="center">
-<img src="{{site.url}}/assets/images/madresGPS/stopmadres.png" style="width: 30%; height: 30%" />
+<img src="{{site.url}}/assets/images/madresGPS/stopmadres.png" style="width: 25%; height: 25%" />
 </div>
 
 ### Clean data
