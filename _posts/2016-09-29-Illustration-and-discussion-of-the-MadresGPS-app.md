@@ -12,7 +12,7 @@ The app can be found and installed from the Google Play Store under the name "ma
 ### Initial setup
 The location accuracy of the phone needs to be set as high, and the WiFi should be turned on.
 
-<div align="center" style="display: inline-block">
+<div align="center">
     <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/location.png" style="width: 100%; height: 100%" />​
     </div>
@@ -26,7 +26,7 @@ For phones with system before android 6.0, the app will ask for permissions at t
 
 If you have android 6.0 and above, you may want to add the app to the whitelist by selecting not optimized for battery under the battery option in system settings so that the tracking will continue to work after the phone enters the doze mode. Otherwise, the app will only record a few times every hour depending on the doze stage of the phone.
 
-<div align="center" style="display:inline-block; text-align:center">
+<div align="center">
     <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/battery.png" style="width: 100%; height: 100%" />​
     </div>
