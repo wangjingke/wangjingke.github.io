@@ -59,16 +59,16 @@ After type in the command, choose the mode and interval, press "Confirm" to star
 
 <div align="center" style="display: inline-block">
     <div style="max-width: 200px; height: auto; display: inline-block">
-    <img src="{{site.url}}/assets/images/madresGPS/startmadres.png" style="width: 50%; height: 50%" />​
+    <img src="{{site.url}}/assets/images/madresGPS/startmadres.png" style="width: 100%; height: 100%" />​
     </div>
     <div style="max-width: 200px; height: auto; display: inline-block">
-    <img src="{{site.url}}/assets/images/madresGPS/start.png" style="width: 50%; height: 50%" />​
+    <img src="{{site.url}}/assets/images/madresGPS/start.png" style="width: 100%; height: 100%" />​
     </div>
     <div style="max-width: 200px; height: auto; display: inline-block">
-    <img src="{{site.url}}/assets/images/madresGPS/notification1.png" style="width: 50%; height: 50%" />​
+    <img src="{{site.url}}/assets/images/madresGPS/notification1.png" style="width: 100%; height: 100%" />​
     </div>
     <div style="max-width: 200px; height: auto; display: inline-block">
-    <img src="{{site.url}}/assets/images/madresGPS/notification2.png" style="width: 50%; height: 50%" />​
+    <img src="{{site.url}}/assets/images/madresGPS/notification2.png" style="width: 100%; height: 100%" />​
     </div>
 </div>
 
