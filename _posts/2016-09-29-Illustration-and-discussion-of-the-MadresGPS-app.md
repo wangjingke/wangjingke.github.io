@@ -14,10 +14,10 @@ The location accuracy of the phone needs to be set as high, and the WiFi should 
 
 <div align="center" style="display: inline-block">
     <div style="max-width: 400px; height: auto; display: inline-block">
-    <img src="{{site.url}}/assets/images/madresGPS/location.png" style="width: 50%; height: 50%" />​
+    <img src="{{site.url}}/assets/images/madresGPS/location.png" />​
     </div>
     <div style="max-width: 400px; height: auto; display: inline-block">
-    <img src="{{site.url}}/assets/images/madresGPS/accuracy.png" style="width: 50%; height: 50%" />​
+    <img src="{{site.url}}/assets/images/madresGPS/accuracy.png" />​
     </div>
 </div>
 
@@ -58,16 +58,16 @@ The recording interval is preset to once every ten seconds, but it can be change
 After type in the command, choose the mode and interval, press "Confirm" to start the tracking. There will be texts showing on the screen stating the participant ID and the study has started. A notification will also show up in the phone indicating the ID and interval.
 
 <div align="center" style="display: inline-block">
-    <div style="max-width: 200px; height: auto; display: inline-block">
+    <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/startmadres.png" style="width: 100%; height: 100%" />​
     </div>
-    <div style="max-width: 200px; height: auto; display: inline-block">
+    <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/start.png" style="width: 100%; height: 100%" />​
     </div>
-    <div style="max-width: 200px; height: auto; display: inline-block">
+    <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/notification1.png" style="width: 100%; height: 100%" />​
     </div>
-    <div style="max-width: 200px; height: auto; display: inline-block">
+    <div style="max-width: 250px; height: auto; display: inline-block">
     <img src="{{site.url}}/assets/images/madresGPS/notification2.png" style="width: 100%; height: 100%" />​
     </div>
 </div>
@@ -76,7 +76,7 @@ After type in the command, choose the mode and interval, press "Confirm" to star
 Type in "stopmadres" on the command line and press "Confirm" to stop the tracking, wait for a few seconds before turn off the app or anything else to give the app sometime to rename the files and shut down the services.
 
 <div align="center">
-<img src="{{site.url}}/assets/images/madresGPS/stopmadres.png" style="width: 50%; height: 50%" />
+<img src="{{site.url}}/assets/images/madresGPS/stopmadres.png" style="width: 30%; height: 30%" />
 </div>
 
 ### Clean data
