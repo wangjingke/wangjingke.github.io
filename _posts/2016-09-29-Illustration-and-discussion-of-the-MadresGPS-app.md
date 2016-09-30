@@ -115,6 +115,7 @@ Here are the same lines from above decrypted as an example. The output is usuall
 
 <blockquote>
 <small>
+<p>
 "MAD092301","2016-09-23 16:41:22","Location[gps 34.066153,-118.197157 acc=4 et=+2m30s192ms alt=93.0 vel=1.25 bear=15.9 ]","1474674082000","16","20" <br>
 "MAD092301","2016-09-23 16:41:22","Location[network 34.066201,-118.197012 acc=50 et=+2m22s794ms ]","1474674074675","WiFi++","Network++" <br>
 "MAD092301","2016-09-23 16:41:32","Location[gps 34.066259,-118.197100 acc=3 et=+2m39s192ms alt=92.0 vel=1.25 bear=18.7 ]","1474674091000","16","20" <br>
@@ -125,6 +126,7 @@ Here are the same lines from above decrypted as an example. The output is usuall
 "MAD092301","2016-09-23 16:41:52","Location[network 34.066287,-118.197149 acc=50 et=+2m42s858ms ]","1474674094739","WiFi++","Network++" <br>
 "MAD092301","2016-09-23 16:42:02","Location[gps 34.066607,-118.196967 acc=3 et=+3m9s192ms alt=90.0 vel=1.0 bear=28.5 ]","1474674121000","16","20" <br>
 "MAD092301","2016-09-23 16:42:02","Location[network 34.066230,-118.197057 acc=50 et=+3m2s860ms ]","1474674114741","WiFi++","Network++" <br>
+</p>
 </small>
 </blockquote>
 
