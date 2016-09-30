@@ -112,7 +112,7 @@ Before decryption, the raw data looks like this,
 
 Here are the same lines from above decrypted as an example. The output is usually in a comma delimited csv file.
 
-<div style="font-size:50%">
+<div style="font-size:10%">
 <blockquote>
 "MAD092301","2016-09-23 16:41:22","Location[gps 34.066153,-118.197157 acc=4 et=+2m30s192ms alt=93.0 vel=1.25 bear=15.9 ]","1474674082000","16","20" <br>
 "MAD092301","2016-09-23 16:41:22","Location[network 34.066201,-118.197012 acc=50 et=+2m22s794ms ]","1474674074675","WiFi++","Network++" <br>
