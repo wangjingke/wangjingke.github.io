@@ -112,6 +112,7 @@ Before decryption, the raw data looks like this,
 
 Here are the same lines from above decrypted as an example. The output is usually in a comma delimited csv file.
 
+<div>
 <small>
 <blockquote>
 "MAD092301","2016-09-23 16:41:22","Location[gps 34.066153,-118.197157 acc=4 et=+2m30s192ms alt=93.0 vel=1.25 bear=15.9 ]","1474674082000","16","20" <br>
@@ -126,6 +127,7 @@ Here are the same lines from above decrypted as an example. The output is usuall
 "MAD092301","2016-09-23 16:42:02","Location[network 34.066230,-118.197057 acc=50 et=+3m2s860ms ]","1474674114741","WiFi++","Network++" <br>
 </blockquote>
 </small>
+</div>
 
 Each line is one entry of location information. The first item is the subject ID in "MAD####" format. The second item is the timestamp when the entry is written to the output file in yyyy-MM-dd HH:mm:ss format. This timestamp is the clock time from the phone. Therefore, in case of daylight saving time or manual time change, we will see a rollback or jump in the timestamp.
 
