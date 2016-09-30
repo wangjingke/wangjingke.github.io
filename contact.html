@@ -13,7 +13,19 @@ title: Contact
      var email = document.getElementById("from_email").value;
      var message = document.getElementById("message").value;
      
-     emailjs.send("default_service","contact",{from_name: name, from_email: email, message_html: message}); 
+     emailjs.send("default_service","contact",
+     {
+         from_name: name, 
+         from_email: email, 
+         message_html: message
+     }).then(function(response){
+         alert("Message succesfully sent, thank you!");
+         document.getElementById("from_name").value = "";
+         document.getElementById("from_email").value = "";
+         document.getElementById("message").value = "";
+     }, function(err) {
+         alert("Sending message failed, please try again...");
+     }); 
  }
 
 </script>
