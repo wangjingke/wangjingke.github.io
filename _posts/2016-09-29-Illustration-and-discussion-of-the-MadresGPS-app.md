@@ -95,18 +95,20 @@ The location data was encrypted with AES and then write to the file. The output 
 
 Before decryption, the raw data looks like this,
 
-<small>
->"2016-09-23 16:41:22","Tracking","EehaW5Lg7TcVZ5AWQWijUTFWkVjp+vkYjGUnFiU1sT2/JQnCbtVuI1Ydude27F4KBC2p96FJB8b2gKj/6MP0iKSXDXvVBSSqOfhtHTgSoewz9PsHDMDz/k96F4PS8VH5","1474674082000","16","20" <br>
->"2016-09-23 16:41:22","Tracking","D84TavTjVh5pfgBEPKWxfTNjFpK5simMc1KOLkHEtND5aMd/mGO934w45pNZKcDGf9JoG0mpqtcifX0DPBww7g==","1474674074675","WiFi++","Network++" <br>
->"2016-09-23 16:41:32","Tracking","EehaW5Lg7TcVZ5AWQWijUX4WaJc5MSPt1VX+QAuo1V3hT7a7wDVwABsVcfMtW1ID/TKwWURH3MYkXnykeL0GwaSXDXvVBSSqOfhtHTgSoezx9N5kYIevvwMwsfunbBDU","1474674091000","16","20" <br>
->"2016-09-23 16:41:32","Tracking","D84TavTjVh5pfgBEPKWxfTNjFpK5simMc1KOLkHEtND5aMd/mGO934w45pNZKcDGf9JoG0mpqtcifX0DPBww7g==","1474674074675","WiFi++","Network++" <br>
->"2016-09-23 16:41:42","Tracking","EehaW5Lg7TcVZ5AWQWijUUkbLBPM3KnHl3jhc5u+AEYH6mx26628KP9OkUxnuA34FHXpvYsAQUF4nNoUc7MPQbdxwQYNS0TD4z8AuUdH6VbxxObbTnB6pOYbvZPQfHkv","1474674100000","16","20" <br>
->"2016-09-23 16:41:42","Tracking","D84TavTjVh5pfgBEPKWxfU6mOFsiygMj9LBE22Yy1y03bP6qnxlsjmkaW2WXplFkPaXexh3HOr637C90yu7bRw==","1474674094739","WiFi++","Network++" <br>
->"2016-09-23 16:41:52","Tracking","EehaW5Lg7TcVZ5AWQWijUR6ntirw/SNGsaadZtglwpgT8r97PqBI9Fxuttt/mVxWjW996Mfrn8EGxFA64tR6yJwpjgDgwWuegivF8C1lcdOU81RRT7V3lAsjJN8+hzXa","1474674112000","12","12" <br>
->"2016-09-23 16:41:52","Tracking","D84TavTjVh5pfgBEPKWxfU6mOFsiygMj9LBE22Yy1y03bP6qnxlsjmkaW2WXplFkPaXexh3HOr637C90yu7bRw==","1474674094739","WiFi++","Network++" <br>
->"2016-09-23 16:42:02","Tracking","EehaW5Lg7TcVZ5AWQWijUakSuGn8MqXJilfELrbbRq6X10868XW0y/g1j+mGH0BXebkFBuP/olRySbSBtw/7rtTltOvzZFH+f0zqW5vLwhs6XbGsV1nKR49QjwClnDlf","1474674121000","16","20" <br>
->"2016-09-23 16:42:02","Tracking","D84TavTjVh5pfgBEPKWxfVSxmQWjsYmEy4g9Y7h/pepXcgWfbwNipXn4+1sHb9Xuf0ndZpYg5qeqM620ahssqA==","1474674114741","WiFi++","Network++" <br>
-</small>
+<blockquote>
+<div style="font-size:80%">
+"2016-09-23 16:41:22","Tracking","EehaW5Lg7TcVZ5AWQWijUTFWkVjp+vkYjGUnFiU1sT2/JQnCbtVuI1Ydude27F4KBC2p96FJB8b2gKj/6MP0iKSXDXvVBSSqOfhtHTgSoewz9PsHDMDz/k96F4PS8VH5","1474674082000","16","20" <br>
+"2016-09-23 16:41:22","Tracking","D84TavTjVh5pfgBEPKWxfTNjFpK5simMc1KOLkHEtND5aMd/mGO934w45pNZKcDGf9JoG0mpqtcifX0DPBww7g==","1474674074675","WiFi++","Network++" <br>
+"2016-09-23 16:41:32","Tracking","EehaW5Lg7TcVZ5AWQWijUX4WaJc5MSPt1VX+QAuo1V3hT7a7wDVwABsVcfMtW1ID/TKwWURH3MYkXnykeL0GwaSXDXvVBSSqOfhtHTgSoezx9N5kYIevvwMwsfunbBDU","1474674091000","16","20" <br>
+"2016-09-23 16:41:32","Tracking","D84TavTjVh5pfgBEPKWxfTNjFpK5simMc1KOLkHEtND5aMd/mGO934w45pNZKcDGf9JoG0mpqtcifX0DPBww7g==","1474674074675","WiFi++","Network++" <br>
+"2016-09-23 16:41:42","Tracking","EehaW5Lg7TcVZ5AWQWijUUkbLBPM3KnHl3jhc5u+AEYH6mx26628KP9OkUxnuA34FHXpvYsAQUF4nNoUc7MPQbdxwQYNS0TD4z8AuUdH6VbxxObbTnB6pOYbvZPQfHkv","1474674100000","16","20" <br>
+"2016-09-23 16:41:42","Tracking","D84TavTjVh5pfgBEPKWxfU6mOFsiygMj9LBE22Yy1y03bP6qnxlsjmkaW2WXplFkPaXexh3HOr637C90yu7bRw==","1474674094739","WiFi++","Network++" <br>
+"2016-09-23 16:41:52","Tracking","EehaW5Lg7TcVZ5AWQWijUR6ntirw/SNGsaadZtglwpgT8r97PqBI9Fxuttt/mVxWjW996Mfrn8EGxFA64tR6yJwpjgDgwWuegivF8C1lcdOU81RRT7V3lAsjJN8+hzXa","1474674112000","12","12" <br>
+"2016-09-23 16:41:52","Tracking","D84TavTjVh5pfgBEPKWxfU6mOFsiygMj9LBE22Yy1y03bP6qnxlsjmkaW2WXplFkPaXexh3HOr637C90yu7bRw==","1474674094739","WiFi++","Network++" <br>
+"2016-09-23 16:42:02","Tracking","EehaW5Lg7TcVZ5AWQWijUakSuGn8MqXJilfELrbbRq6X10868XW0y/g1j+mGH0BXebkFBuP/olRySbSBtw/7rtTltOvzZFH+f0zqW5vLwhs6XbGsV1nKR49QjwClnDlf","1474674121000","16","20" <br>
+"2016-09-23 16:42:02","Tracking","D84TavTjVh5pfgBEPKWxfVSxmQWjsYmEy4g9Y7h/pepXcgWfbwNipXn4+1sHb9Xuf0ndZpYg5qeqM620ahssqA==","1474674114741","WiFi++","Network++" <br>
+</div>
+</blockquote>
 
 ### Understanding the decrypted output
 
