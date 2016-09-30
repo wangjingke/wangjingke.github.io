@@ -96,7 +96,7 @@ The location data was encrypted with AES and then write to the file. The output 
 Before decryption, the raw data looks like this,
 
 <blockquote>
-<div style="font-size:80%">
+<div style="font-size:60%">
 "2016-09-23 16:41:22","Tracking","EehaW5Lg7TcVZ5AWQWijUTFWkVjp+vkYjGUnFiU1sT2/JQnCbtVuI1Ydude27F4KBC2p96FJB8b2gKj/6MP0iKSXDXvVBSSqOfhtHTgSoewz9PsHDMDz/k96F4PS8VH5","1474674082000","16","20" <br>
 "2016-09-23 16:41:22","Tracking","D84TavTjVh5pfgBEPKWxfTNjFpK5simMc1KOLkHEtND5aMd/mGO934w45pNZKcDGf9JoG0mpqtcifX0DPBww7g==","1474674074675","WiFi++","Network++" <br>
 "2016-09-23 16:41:32","Tracking","EehaW5Lg7TcVZ5AWQWijUX4WaJc5MSPt1VX+QAuo1V3hT7a7wDVwABsVcfMtW1ID/TKwWURH3MYkXnykeL0GwaSXDXvVBSSqOfhtHTgSoezx9N5kYIevvwMwsfunbBDU","1474674091000","16","20" <br>
