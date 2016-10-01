@@ -9,23 +9,57 @@ title: Contact
    })();
    
  function send() {
-     var name = document.getElementById("from_name").value;
-     var email = document.getElementById("from_email").value;
-     var message = document.getElementById("message").value;
+     var courier = [
+         document.getElementById("from_name").value,
+         document.getElementById("from_email").value,
+         document.getElementById("message").value
+     ]
+     var ready = [courier[0]=="", courier[1]=="", courier[2]==""];
+     var dictionary = ["name", "email", "message"];
      
-     emailjs.send("default_service","contact",
-     {
-         from_name: name, 
-         from_email: email, 
-         message_html: message
-     }).then(function(response){
-         alert("Message succesfully sent, thank you!");
-         document.getElementById("from_name").value = "";
-         document.getElementById("from_email").value = "";
-         document.getElementById("message").value = "";
-     }, function(err) {
-         alert("Sending message failed, please try again...");
-     }); 
+     // ask confirmation for empty entry
+     function confirmation (field) {
+         var yes = confirm("Are you sure to leave your " + field + " blank?");
+         if (yes) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+     
+     for (i=0; i<ready.length; i++) {
+         if (!ready[i]) {
+             ready[i] = confirmation(dictionary[i]);
+         }
+     }
+     
+     if (ready.every(function(x){Boolean(x)})) {
+         function replace(input) {
+             if (input=="") {
+                 return "NA";
+             } else {
+                 return input;
+             }
+         }
+         
+         courier.forEach(function(element, index, thisArray){
+            thisArray[index] = replace(thisArray[index]); 
+         });
+         
+         emailjs.send("default_service","contact",
+         {
+             from_name: courier[0],
+             from_email: courier[1],
+             message_html: courier[2]
+         }).then(function(response){
+             alert("Message succesfully sent, thank you!");
+             document.getElementById("from_name").value = "";
+             document.getElementById("from_email").value = "";
+             document.getElementById("message").value = "";
+         }, function(err) {
+             alert("Sending message failed, please try again...");
+         });
+     }
  }
 
 </script>
@@ -34,7 +68,8 @@ title: Contact
     <div class="row">
         <div class="col-lg-12">
             <h3>{{page.title}}</h3>
-            <p>You can send me an email to: kwangjing AT gmail.com</p>
+            <p>You can find me on <a href="https://github.com/wangjingke">GitHub</a></p>
+            <p>You can also send me an email to: kwangjing AT gmail.com</p>
             <p>or leave a message using the form below</p>
             <p>Name: <input type="text" id="from_name" /> <br /></p>
             <p></p>
