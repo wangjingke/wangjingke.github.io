@@ -9,12 +9,12 @@ title: Contact
    })();
    
  function send() {
-     var courier = [
+     courier = [
          document.getElementById("from_name").value,
          document.getElementById("from_email").value,
          document.getElementById("message").value
      ]
-     var ready = [courier[0]!="", courier[1]!="", courier[2]!=""];
+     ready = [courier[0]!="", courier[1]!="", courier[2]!=""];
      var dictionary = ["name", "email", "message"];
      
      // ask confirmation for empty entry
@@ -33,7 +33,7 @@ title: Contact
          }
      }
      
-     if (ready.every(function(x){Boolean(x)})) {
+     if (ready.every(function(x){return Boolean(x)})) {
          function replace(input) {
              if (input=="") {
                  return "NA";
