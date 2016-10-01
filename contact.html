@@ -17,49 +17,54 @@ title: Contact
      ready = [courier[0]!="", courier[1]!="", courier[2]!=""];
      var dictionary = ["name", "email", "message"];
      
-     // ask confirmation for empty entry
-     function confirmation (field) {
-         var yes = confirm("Are you sure to leave your " + field + " blank?");
-         if (yes) {
-             return true;
-         } else {
-             return false;
-         }
-     }
-     
-     for (i=0; i<ready.length; i++) {
-         if (!ready[i]) {
-             ready[i] = confirmation(dictionary[i]);
-         }
-     }
-     
-     if (ready.every(function(x){return Boolean(x)})) {
-         function replace(input) {
-             if (input=="") {
-                 return "NA";
+     if (!Boolean(ready[1])) {
+         alert("Sorry, but your email address cannot be left blank");
+     } else {
+         // ask confirmation for empty entry
+         function confirmation (field) {
+             var yes = confirm("Are you sure to leave your " + field + " blank?");
+             if (yes) {
+                 return true;
              } else {
-                 return input;
+                 return false;
              }
          }
          
-         courier.forEach(function(element, index, thisArray){
-            thisArray[index] = replace(thisArray[index]); 
-         });
+         for (i=0; i<ready.length; i++) {
+             if (!ready[i]) {
+                 ready[i] = confirmation(dictionary[i]);
+             }
+         }
          
-         emailjs.send("default_service","contact",
-         {
-             from_name: courier[0],
-             from_email: courier[1],
-             message_html: courier[2]
-         }).then(function(response){
-             alert("Message succesfully sent, thank you!");
-             document.getElementById("from_name").value = "";
-             document.getElementById("from_email").value = "";
-             document.getElementById("message").value = "";
-         }, function(err) {
-             alert("Sending message failed, please try again...");
-         });
+         if (ready.every(function(x){return Boolean(x)})) {
+             function replace(input) {
+                 if (input=="") {
+                     return "NA";
+                 } else {
+                     return input;
+                 }
+             }
+             
+             courier.forEach(function(element, index, thisArray){
+                thisArray[index] = replace(thisArray[index]); 
+             });
+             
+             emailjs.send("default_service","contact",
+             {
+                 from_name: courier[0],
+                 from_email: courier[1],
+                 message_html: courier[2]
+             }).then(function(response){
+                 alert("Message succesfully sent, thank you!");
+                 document.getElementById("from_name").value = "";
+                 document.getElementById("from_email").value = "";
+                 document.getElementById("message").value = "";
+             }, function(err) {
+                 alert("Sending message failed, please check your email address and try again...");
+             });
+         }
      }
+        
  }
 
 </script>
