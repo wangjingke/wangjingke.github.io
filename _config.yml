@@ -1,8 +1,10 @@
 name: Jing's Homepage
 author: Wangjing Ke
+highlighter: rouge
 
 # site settings
 # baseurl: /blog
 url: http://wangjingke.com
 category_dir: /
 permalink: /:year/:month/:day/:title
+
