@@ -4,7 +4,7 @@ title: "Some Snippets in R"
 date: 2016-10-12
 ---
 
-```R
+```Rcript
 # Reading a csv files with tolerance to empty files
 readCSV = function(target, header = TRUE) {
     output=try(read.csv(target, header = header, stringsAsFactors = FALSE, skipNul = TRUE, encoding = "UTF-8"), silent = TRUE)
@@ -12,7 +12,7 @@ readCSV = function(target, header = TRUE) {
 }
 ```
 
-```R
+```r
 # Combination of elements from two string vectors
 outer(c("a", "b", "c"), c(1, 2), paste0)
 ```
