@@ -5,11 +5,13 @@ date: 2016-10-12
 ---
 
 ```r
+{% highlight r %}
 # Reading a csv files with tolerance to empty files
 readCSV = function(target, header = TRUE) {
     output=try(read.csv(target, header = header, stringsAsFactors = FALSE, skipNul = TRUE, encoding = "UTF-8"), silent = TRUE)
     if (inherits(output, "try-error")) return(NA) else return(output)
 }
+{% endhighlight %}
 ```
 
 ```r
