@@ -4,7 +4,7 @@ title: "Some Snippets in R"
 date: 2016-10-12
 ---
 
-```Rcript
+```r
 # Reading a csv files with tolerance to empty files
 readCSV = function(target, header = TRUE) {
     output=try(read.csv(target, header = header, stringsAsFactors = FALSE, skipNul = TRUE, encoding = "UTF-8"), silent = TRUE)
@@ -17,7 +17,7 @@ readCSV = function(target, header = TRUE) {
 outer(c("a", "b", "c"), c(1, 2), paste0)
 ```
 
-```R
+```r
 # Take the first element from each vector item after strsplit
 sapply(strsplit(vector, "_"), "[[", 1)
 sapply(strsplit(vector, "_"), head, 1)
@@ -25,13 +25,13 @@ sapply(strsplit(vector, "_"), head, 1)
 sapply(strsplit(vector, "_"), tail, 2)
 ```
 
-```R
+```r
 # Creating empty data frame with column names
 data.frame(matrix(NA, nrow = 10, ncol = 3, dimnames = list(c(), c("V1", "V2", "V3"))))
 setNames(data.frame(matrix(NA, nrow = 10, ncol = 3)), c("V1", "V2", "V3"))
 ```
 
-```R
+```r
 # Converting string time to Unix time
 time = strptime(stringTime, format = "%Y-%m-%d %H:%M:%S", tz = "America/Los_Angeles")
 # function to detect number of digits in the hr/min and add 0 if it is 1
@@ -54,7 +54,7 @@ convSec = function (x) {
 as.numeric(difftime(currentDate, birthday, units = "days")) %/% 365.25
 ```
 
-```R
+```r
 # Parallel computing
 library(foreach)
 library(doParallel)
@@ -83,21 +83,21 @@ stopCluster(cl)
 
 ```
 
-```R
+```r
 # grep any csv file without DataTable in filename
 grep("^((?!DataTable).)*\\.csv$", c(ListX), perl = TRUE, value = TRUE)
 # grep content between patterns (substitute matches to empty string)
 sub("^.*survey/(.*?)/Bed_Wake.*", "\\1", vectors)
 ```
 
-```R
+```r
 # max column numbers in a file
 col.num = max(count.fields(fileX, skip = 10, sep = ","))
 # reading files from the 11th line and only the first 4 columns
 read.csv(fileX, skip = 10, header = FALSE, colClasses = c(rep("integer", 4), rep("NULL", col.num - 4)))
 ```
 
-```R
+```r
 # count consecutive appearance of elements (less than 120 consecutive appearances of integers less than 100 are considered 0s) in a vector (data$y)
 vert=ifelse(data$y>0 & data$y<100, 1, data$y) # change numeric 1 to 100 into 1
 chunk=data.frame(values=rle(vert)$values, lengths=rle(vert)$lengths) # consecutive 0, 1 and other numbers
@@ -107,16 +107,9 @@ chunk$indicator=rep(seq_along(rleX$lengths), rleX$lengths) # assign a new class 
 compress=data.frame(values=rleX$values, aggregate(chunk$lengths, by=list(c(chunk$indicator)), FUN=sum, na.rm=TRUE))
 ```
 
-```R
+```r
 # aggregate
 aggregate(chunk$lengths, by=list(c(chunk$indicator)), FUN=sum, na.rm=TRUE)
 aggregate(lengths~indicator, data=chunk, FUN=sum, na.rm=TRUE)
 ```
-
-
-
-
-
-
-
 
