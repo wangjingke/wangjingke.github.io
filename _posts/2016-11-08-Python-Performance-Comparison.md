@@ -57,6 +57,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function) <br>
 </blockquote>
 
 Another way to apply a function to both list is vecterization.
+
 ```python
 def categorize(valid, y):
     if valid==0:
@@ -77,6 +78,7 @@ def categorize(valid, y):
 
 mvpa = list(map(categorize, valid, meterplus.data))
 ```
+
 Again, using `%timeit` and `%prun -l` to time the performance.
 <blockquote>
 <div style="font-size:80%">
