@@ -41,7 +41,6 @@ meterplus.df['mvpa'] = meterplus.df.apply(categorize, axis = 1)
 Using `%timeit` and `%prun -l` from ipython, we can see the performance of this process
 <blockquote>
 <div style="font-size:80%">
-
 In [7]: %timeit acc2.label(acctest) <br>
 1 loop, best of 3: 1.72 s per loop <br>
 In [9]: %prun -l 3 acc2.label(acctest) <br>
@@ -53,8 +52,7 @@ List reduced from 320 to 3 due to restriction <3> <br> <br>
 ncalls  tottime  percall  cumtime  percall filename:lineno(function) <br>
 1048969    0.143    0.000    0.263    0.000 {built-in method builtins.isinstance} <br>
 185798    0.131    0.000    0.294    0.000 dtypes.py:74(is_dtype) <br>
-20639    0.125    0.000    0.125    0.000 internals.py:2202(<lambda>) <br>
-
+20639    0.125    0.000    0.125    0.000 internals.py:2202() <br>
 </div>
 </blockquote>
 
