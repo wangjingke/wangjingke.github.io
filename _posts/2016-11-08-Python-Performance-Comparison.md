@@ -23,17 +23,17 @@ def categorize(row):
         return 'nonvalid'
     elif row['valid']==1:
         if cutoff[0] <= row['y'] < cutoff[1]:
-	           return 'sed'
+            return 'sed'
         elif cutoff[1] <= row['y'] < cutoff[2]:
-	           return 'light'
+	        return 'light'
         elif cutoff[2] <= row['y'] < cutoff[3]:
-	           return 'mod'
+	        return 'mod'
         elif cutoff[3] < row['y']:
-	           return 'vig'
+	        return 'vig'
         else:
-	           return np.NaN
+	        return np.NaN
     else:
-	    return np.NaN
+        return np.NaN
 	
 meterplus.df['mvpa'] = meterplus.df.apply(categorize, axis = 1)
 ```  
