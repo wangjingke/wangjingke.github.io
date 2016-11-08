@@ -46,3 +46,14 @@ import os
 os.system('convert -delay 10 -loop 0 movie*.png kgpc3d.gif')
 os.system('convert kgpc3d.gif -resize 360x360 kgpc3d_small.gif')
 ```
+
+```python
+# check speed in ipython
+%time it 
+%prun -l 10
+```
+
+```python
+# element-wise group two list, then apply function element-wise
+map(lambda (x,y): x+y, zip([1,2,3,4],[4,5,6,7]))
+```
