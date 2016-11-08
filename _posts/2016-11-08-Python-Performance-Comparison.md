@@ -19,21 +19,21 @@ meterplus.df = pd.DataFrame({
 })
 
 def categorize(row):
-	if row['valid']==0:
-		return 'nonvalid'
-	elif row['valid']==1:
-		if cutoff[0] <= row['y'] < cutoff[1]:
-			return 'sed'
-		elif cutoff[1] <= row['y'] < cutoff[2]:
-			return 'light'
-		elif cutoff[2] <= row['y'] < cutoff[3]:
-			return 'mod'
-		elif cutoff[3] < row['y']:
-			return 'vig'
-		else:
-			return np.NaN
-	else:
-			return np.NaN
+    if row['valid']==0:
+        return 'nonvalid'
+    elif row['valid']==1:
+        if cutoff[0] <= row['y'] < cutoff[1]:
+	           return 'sed'
+        elif cutoff[1] <= row['y'] < cutoff[2]:
+	           return 'light'
+        elif cutoff[2] <= row['y'] < cutoff[3]:
+	           return 'mod'
+        elif cutoff[3] < row['y']:
+	           return 'vig'
+        else:
+	           return np.NaN
+    else:
+	    return np.NaN
 	
 meterplus.df['mvpa'] = meterplus.df.apply(categorize, axis = 1)
 ```  
@@ -80,6 +80,7 @@ mvpa = list(map(categorize, valid, meterplus.data))
 ```
 
 Again, using `%timeit` and `%prun -l` to time the performance.
+
 <blockquote>
 <div style="font-size:80%">
 In [10]: %timeit acc1.label(acctest) <br>
