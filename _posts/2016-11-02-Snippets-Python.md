@@ -57,3 +57,14 @@ os.system('convert kgpc3d.gif -resize 360x360 kgpc3d_small.gif')
 # element-wise group two list, then apply function element-wise
 map(lambda (x,y): x+y, zip([1,2,3,4],[4,5,6,7]))
 ```
+
+```python
+# list all files recursively in a folder
+import glob
+print(glob.glob('/path/**', recursive = True))
+# another faster way
+for root, dirs, files in os.walk("/mydir"):
+    for file in files:
+        if file.endswith(".txt"):
+             print(os.path.join(root, file))
+```
