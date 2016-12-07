@@ -56,6 +56,9 @@ os.system('convert kgpc3d.gif -resize 360x360 kgpc3d_small.gif')
 ```python
 # element-wise group two list, then apply function element-wise
 map(lambda (x,y): x+y, zip([1,2,3,4],[4,5,6,7]))
+
+# apply function element-wise to a dictionary
+newDict = {k:f(v) for k, v in oldDict.items()}
 ```
 
 ```python
