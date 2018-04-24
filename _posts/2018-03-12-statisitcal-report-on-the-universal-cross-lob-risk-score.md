@@ -41,14 +41,12 @@ Results:
     <img src="{{site.url}}/assets/images/risk_score/medicare_risk_score_hist.png" />​
     <img src="{{site.url}}/assets/images/risk_score/medicare_risk_score_stem.png" />​
     </div>
-    </br>
 
     b.	The distribution of Marketplace risk score
     <div align="center">
     <img src="{{site.url}}/assets/images/risk_score/marketplace_risk_score_histogram.png" />​
     <img src="{{site.url}}/assets/images/risk_score/marketplace_risk_score_stemplot.png" />​
     </div>
-    </br>
 
     c.	A couple things worth noticing in the distributions of risk scores. The distribution of both risk scores are highly right skewed in their population. The range of Medicare risk score is [0, 14], while that of Marketplace is 0 to over 400. The Medicare scores are less concentrated on the lower end than the Marketplace ones, indicating a sicker population if these two are comparable or on the same scale.
 
@@ -85,15 +83,13 @@ The Actuarial Department has then supplied the SC Medicaid CDPS risk score for p
 <img src="{{site.url}}/assets/images/risk_score/medicaid_risk_score_hist.png" />​
 <img src="{{site.url}}/assets/images/risk_score/medicaid_risk_score_stem.png" />​
 </div>
-</br>
 
 3. The quality provided the exact numbers on the elements of the utilization index. It turned out that the paid_ntile is a better indicator since it had a higher correlation coefficient with MARA and CDPS risk score than the utilization index.
 
 4. The result of the normalization of the risk score was not ideal due to heavy concentration, and there was breakage on the distribution. The percentile breaks were not unique.
 <div align="center">
-<img src="{{site.url}}/assets/images/risk_score/medicare_risk_score_norm.png" />​
+<img src="{{site.url}}/assets/images/risk_score/medicaid_risk_score_norm.png" />​
 </div>
-</br>
 
 5. The correlation between the prediction from linear regression or random forests and risk score or normalized risk score was no higher than 67%.
 
