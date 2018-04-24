@@ -104,4 +104,31 @@ def changeAllColType(df: org.apache.spark.sql.DataFrame, sourceType: String, new
         case (table, col) => changeColType(table, col.name, newType)
     }
 }
+
+
+// recursive function that takes a start date and end date and return a list of month in between, with a cutoff of 2018-01-01
+def getMonthList(effdate: java.sql.Date, termdate: java.sql.Date) = {
+    import java.util.Calendar
+    def add_month(x: java.sql.Date) = {
+        val cal = Calendar.getInstance()
+        cal.setTime(x)
+        cal.add(Calendar.MONTH, 1)
+        java.sql.Date.valueOf(cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH)+1)+"-"+cal.get(Calendar.DATE))
+    }
+
+    val cutoff = java.sql.Date.valueOf("2018-01-01")
+    val start = effdate
+    val end = if (termdate.after(cutoff)) cutoff else termdate
+    // 
+    def monthList(mid: java.sql.Date, end: java.sql.Date): List[java.sql.Date] = (mid, end) match {
+        case (mid, end) if !mid.after(end) => mid +: monthList(add_month(mid), end)
+        case _ => Nil
+    }
+    monthList(start, end)
+}
+
+// 3 ways to register a user defined function (UDF) in spark
+sqlContext.udf.register("getMonthListUDF", getMonthList _)
+val getMonthListUDF = udf[List[java.sql.Date], java.sql.Date, java.sql.Date](getMonthList)
+val getMonthListUDF = udf{(start:java.sql.Date, end:java.sql.Date) => getMonthList(start, end)}
 ```
